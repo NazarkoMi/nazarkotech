@@ -31,6 +31,7 @@ export default function Home() {
   .repair-card:hover,
   .model-card:hover {
     transform: translateY(-6px) scale(1.03);
+    background: rgba(212,175,55,0.08);
     border-color: rgba(212, 175, 55, 0.65) !important;
     box-shadow:
       0 20px 70px rgba(212, 175, 55, 0.16),
