@@ -83,7 +83,19 @@ const repairsList = modelData?.repairs || repairs;
     style={card}
     className="repair-card"
   >
-    <h3 style={cardTitle}>{repair.title}</h3>
+    <div style={cardTop}>
+  <span style={icon}>
+    {repair.title.includes("екрана") && "📱"}
+    {repair.title.includes("акумулятора") && "🔋"}
+    {repair.title.includes("роз'єму") && "⚡"}
+    {repair.title.includes("камери") && "📷"}
+    {repair.title.includes("чистка") && "🧼"}
+    {repair.title.includes("Діагностика") && "🛠️"}
+    {repair.title.includes("скла") && "✨"}
+  </span>
+
+  <h3 style={cardTitle}>{repair.title}</h3>
+</div>
 
     <p style={priceText}>{repair.price}</p>
 
@@ -261,4 +273,14 @@ const mutedText = {
   color: "#777",
   marginTop: "10px",
   fontSize: "14px",
+};
+const cardTop = {
+  display: "flex",
+  alignItems: "center",
+  gap: "12px",
+  marginBottom: "14px",
+};
+
+const icon = {
+  fontSize: "22px",
 };
