@@ -48,6 +48,7 @@ export default function Home() {
           padding: 0;
           overflow-x: hidden;
           scroll-behavior: smooth;
+          background: #050505;
         }
 
         main {
@@ -84,13 +85,6 @@ export default function Home() {
 
           .repair-grid {
             grid-template-columns: 1fr 1fr !important;
-          }
-        }
-
-        @media (max-width: 430px) {
-          .repair-grid {
-            grid-template-columns: 1fr 1fr !important;
-            gap: 12px !important;
           }
         }
       `}</style>
