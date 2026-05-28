@@ -10,7 +10,7 @@ type Props = {
 };
 
 const repairs = [
-  { title: "Заміна екрана", price: "від 1550 грн", time: "2–4 год" },
+  { title: "Заміна екрана Оригаінал/Високоякісний аналог", price: "від 1550 грн", time: "2–4 год" },
   { title: "Заміна акумулятора", price: "від 1190 грн", time: "1–2 год" },
   { title: "Заміна роз'єму зарядки", price: "від 1490 грн", time: "2–3 год" },
   { title: "Заміна камери", price: "від 1790 грн", time: "2–4 год" },
@@ -42,6 +42,13 @@ function getRepairIcon(title: string) {
   if (title.includes("чистка")) return "🧼";
   if (title.includes("Діагностика")) return "🛠️";
   if (title.includes("скла")) return "✨";
+  if (title.includes("динаміка")) return "🔊";
+  if (title.includes("герметичності")) return "💧";
+  if (title.includes("фронтальної")) return "🤳";
+  if (title.includes("Android")) return "🤖";
+  if (title.includes("Нова оригінальна")) return "🍏";
+  if (title.includes("Вживана")) return "♻️";
+  if (title.includes("Невідома")) return "🔋";
   return "🔧";
 }
 
@@ -78,9 +85,10 @@ export default async function ModelPage({ params }: Props) {
         <h1 style={title}>Ремонт {modelName}</h1>
 
         <p style={subtitle}>
-          Заміна екрана, акумулятора, роз'єму зарядки, камери, заднього скла
-          та інших компонентів для {modelName}.
-        </p>
+  {model === "android"
+    ? "Ремонт Android смартфонів будь-якої складності. Для уточнення вартості ремонту зверніться у Telegram або Viber."
+    : `Заміна екрана, акумулятора, роз'єму зарядки, камери, заднього скла та інших компонентів для ${modelName}.`}
+</p>
       </section>
 
       <section style={section}>

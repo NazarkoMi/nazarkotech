@@ -1,43 +1,65 @@
 import Link from "next/link";
-const models = [
-  "iPhone X", "iPhone XR", "iPhone XS", "iPhone XS Max",
-  "iPhone 11", "iPhone 11 Pro", "iPhone 11 Pro Max",
-  "iPhone 12 mini", "iPhone 12", "iPhone 12 Pro", "iPhone 12 Pro Max",
-  "iPhone 13 mini", "iPhone 13", "iPhone 13 Pro", "iPhone 13 Pro Max",
-  "iPhone 14", "iPhone 14 Plus", "iPhone 14 Pro", "iPhone 14 Pro Max",
-  "iPhone 15", "iPhone 15 Plus", "iPhone 15 Pro", "iPhone 15 Pro Max",
-  "iPhone 16", "iPhone 16 Plus", "iPhone 16 Pro", "iPhone 16 Pro Max",
-  "iPhone 17", "iPhone 17 Air", "iPhone 17 Pro", "iPhone 17 Pro Max",
-];
 
-function slugify(model: string) {
-  return model
-    .toLowerCase()
-    .replaceAll(" ", "-");
-}
+const models = [
+  { name: "🤖 Android", slug: "android" },
+
+  { name: "iPhone X", slug: "iphone-x" },
+  { name: "iPhone XR", slug: "iphone-xr" },
+  { name: "iPhone XS", slug: "iphone-xs" },
+  { name: "iPhone XS Max", slug: "iphone-xs-max" },
+
+  { name: "iPhone 11", slug: "iphone-11" },
+  { name: "iPhone 11 Pro", slug: "iphone-11-pro" },
+  { name: "iPhone 11 Pro Max", slug: "iphone-11-pro-max" },
+
+  { name: "iPhone 12 mini", slug: "iphone-12-mini" },
+  { name: "iPhone 12", slug: "iphone-12" },
+  { name: "iPhone 12 Pro", slug: "iphone-12-pro" },
+  { name: "iPhone 12 Pro Max", slug: "iphone-12-pro-max" },
+
+  { name: "iPhone 13 mini", slug: "iphone-13-mini" },
+  { name: "iPhone 13", slug: "iphone-13" },
+  { name: "iPhone 13 Pro", slug: "iphone-13-pro" },
+  { name: "iPhone 13 Pro Max", slug: "iphone-13-pro-max" },
+
+  { name: "iPhone 14", slug: "iphone-14" },
+  { name: "iPhone 14 Plus", slug: "iphone-14-plus" },
+  { name: "iPhone 14 Pro", slug: "iphone-14-pro" },
+  { name: "iPhone 14 Pro Max", slug: "iphone-14-pro-max" },
+
+  { name: "iPhone 15", slug: "iphone-15" },
+  { name: "iPhone 15 Plus", slug: "iphone-15-plus" },
+  { name: "iPhone 15 Pro", slug: "iphone-15-pro" },
+  { name: "iPhone 15 Pro Max", slug: "iphone-15-pro-max" },
+
+  { name: "iPhone 16", slug: "iphone-16" },
+  { name: "iPhone 16 Pro", slug: "iphone-16-pro" },
+  { name: "iPhone 16 Pro Max", slug: "iphone-16-pro-max" },
+
+  { name: "iPhone 17", slug: "iphone-17" },
+  { name: "iPhone 17 Pro", slug: "iphone-17-pro" },
+  { name: "iPhone 17 Pro Max", slug: "iphone-17-pro-max" },
+];
 
 export default function ModelsGrid() {
   return (
     <section style={section}>
-      <h2 style={sectionTitle}>
-        Обери свою модель iPhone
-      </h2>
+      <h2 style={sectionTitle}>Обери свою модель</h2>
 
       <p style={sectionDesc}>
-        Для кожної моделі буде окрема сторінка
-        з усіма доступними ремонтами.
+        Для кожної моделі буде окрема сторінка з доступними ремонтами.
       </p>
 
       <div style={modelGrid}>
         {models.map((model) => (
           <Link
-  key={model}
-  href={`/remont-iphone/${slugify(model)}`}
-  style={modelCard}
-  className="model-card"
->
-  {model}
-</Link>
+            key={model.slug}
+            href={`/remont-iphone/${model.slug}`}
+            style={modelCard}
+            className="model-card"
+          >
+            {model.name}
+          </Link>
         ))}
       </div>
     </section>
