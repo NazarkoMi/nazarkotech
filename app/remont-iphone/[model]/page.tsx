@@ -10,9 +10,12 @@ type Props = {
 };
 
 const repairs = [
-  { title: "Заміна скла", price: "від 1550 грн", time: "2–4 год" },
+  { title: "Заміна екрана", price: "від 1550 грн", time: "2–4 год" },
   { title: "Заміна акумулятора", price: "від 1190 грн", time: "1–2 год" },
-  { title: "Заміна заднього скла", price: "від 1790 грн", time: "3–5 год" },
+  { title: "Заміна роз'єму зарядки", price: "від 1490 грн", time: "2–3 год" },
+  { title: "Заміна камери", price: "від 1790 грн", time: "2–4 год" },
+  { title: "Переклейка заднього скла", price: "від 1790 грн", time: "3–5 год" },
+  { title: "Комплексна чистка", price: "від 790 грн", time: "1–2 год" },
   { title: "Діагностика", price: "безкоштовно", time: "15–30 хв" },
 ];
 
@@ -31,97 +34,77 @@ function formatModel(slug: string) {
     .join(" ");
 }
 
-export async function generateMetadata(
-  { params }: Props
-): Promise<Metadata> {
+function getRepairIcon(title: string) {
+  if (title.includes("екрана")) return "📱";
+  if (title.includes("акумулятора")) return "🔋";
+  if (title.includes("роз'єму")) return "⚡";
+  if (title.includes("камери")) return "📷";
+  if (title.includes("чистка")) return "🧼";
+  if (title.includes("Діагностика")) return "🛠️";
+  if (title.includes("скла")) return "✨";
+  return "🔧";
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const resolvedParams = await params;
-
   const modelData = iphoneRepairs[resolvedParams.model];
-
-  const modelName =
-    modelData?.name || formatModel(resolvedParams.model);
+  const modelName = modelData?.name || formatModel(resolvedParams.model);
 
   return {
-    title: `Ремонт ${modelName} у Львові | NazarkoTech.`,
-    description: `Професійний ремонт ${modelName} у Львові. Заміна скла, акумулятора, заднього скла, камер та інших компонентів.`,
+    title: `Ремонт ${modelName} у Львові | NazarkoTech`,
+    description: `Професійний ремонт ${modelName} у Львові. Заміна екрана, акумулятора, роз'єму зарядки, камери та інших компонентів.`,
   };
 }
 
 export default async function ModelPage({ params }: Props) {
   const { model } = await params;
   const modelData = iphoneRepairs[model];
-const modelName = modelData?.name || formatModel(model);
-const repairsList = modelData?.repairs || repairs;
+  const modelName = modelData?.name || formatModel(model);
+  const repairsList = modelData?.repairs || repairs;
 
   return (
     <main style={page}>
-        <Header />
-        <section style={hero}>
-        <p style={eyebrow}>
-          NazarkoTech. · Ремонт iPhone
-        </p>
+      <Header />
 
-        <h1 style={title}>
-          Ремонт {modelName}
-        </h1>
+      <section style={hero}>
+        <p style={eyebrow}>NazarkoTech · Ремонт iPhone</p>
+
+        <h1 style={title}>Ремонт {modelName}</h1>
 
         <p style={subtitle}>
-          Заміна скла, акумулятора, заднього скла,
-          камер та інших компонентів для {modelName}.
+          Заміна екрана, акумулятора, роз'єму зарядки, камери, заднього скла
+          та інших компонентів для {modelName}.
         </p>
       </section>
 
       <section style={section}>
-        <h2 style={sectionTitle}>
-          Популярні ремонти
-        </h2>
+        <h2 style={sectionTitle}>Популярні ремонти</h2>
 
         <div style={grid} className="model-repair-grid">
           {repairsList.map((repair) => (
-  <div
-    key={repair.title}
-    style={card}
-    className="repair-card"
-  >
-    <div style={cardTop}>
-  <span style={icon}>
-    {repair.title.includes("екрана") && "📱"}
-    {repair.title.includes("акумулятора") && "🔋"}
-    {repair.title.includes("роз'єму") && "⚡"}
-    {repair.title.includes("камери") && "📷"}
-    {repair.title.includes("чистка") && "🧼"}
-    {repair.title.includes("Діагностика") && "🛠️"}
-    {repair.title.includes("скла") && "✨"}
-  </span>
+            <div key={repair.title} style={card} className="repair-card">
+              <span style={icon}>{getRepairIcon(repair.title)}</span>
 
-  <h3 style={cardTitle}>{repair.title}</h3>
-</div>
+              <h3 style={cardTitle}>{repair.title}</h3>
 
-    <p style={priceText}>{repair.price}</p>
-
-    <p style={mutedText}>{repair.time}</p>
-  </div>
-))}
-
+              <div className="repair-price-block">
+                <p style={priceText}>{repair.price}</p>
+                <p style={mutedText}>{repair.time}</p>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
-      <section style={cta}>
-        <h2 style={ctaTitle}>
-          Записатись на ремонт
-        </h2>
+      <section style={cta} className="cta-model">
+        <h2 style={ctaTitle}>Записатись на ремонт</h2>
 
         <p style={ctaText}>
-          Напиши у Telegram або Viber,
-          вкажи модель iPhone та проблему.
+          Напиши у Telegram або Viber, вкажи модель iPhone та проблему.
         </p>
 
-        <div style={buttonRow}>
-          <Link
-            href="https://t.me/NazarkoMi"
-            style={goldButton}
-            className="btn"
-          >
+        <div style={buttonRow} className="cta-model-buttons">
+          <Link href="https://t.me/NazarkoMi" style={goldButton} className="btn">
             Telegram
           </Link>
 
@@ -136,52 +119,104 @@ const repairsList = modelData?.repairs || repairs;
       </section>
 
       <style>{`
-  * {
-    box-sizing: border-box;
-  }
+        * {
+          box-sizing: border-box;
+        }
 
-  html,
-  body {
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-  }
+        html,
+        body {
+          margin: 0;
+          padding: 0;
+          overflow-x: hidden;
+        }
 
-  main {
-    overflow-x: hidden;
-  }
+        main {
+          overflow-x: hidden;
+        }
 
-  .repair-card,
-  .btn {
-    transition: all 0.25s ease;
-  }
+        .repair-card,
+        .btn {
+          transition: all 0.25s ease;
+        }
 
-  .repair-card:hover {
-    transform: translateY(-6px) scale(1.03);
-    border-color: rgba(212,175,55,0.65) !important;
-    box-shadow:
-      0 20px 70px rgba(212,175,55,0.16),
-      0 0 40px rgba(212,175,55,0.08);
-  }
+        .repair-card:hover {
+          transform: translateY(-6px) scale(1.03);
+          border-color: rgba(212,175,55,0.65) !important;
+          box-shadow:
+            0 20px 70px rgba(212,175,55,0.16),
+            0 0 40px rgba(212,175,55,0.08);
+        }
 
-  .btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 14px 40px rgba(212,175,55,0.22);
-  }
+        .btn:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 14px 40px rgba(212,175,55,0.22);
+        }
 
-  @media (max-width: 768px) {
-    .repair-card:hover,
-    .btn:hover {
-      transform: none;
-    }
-  }
+        @media (max-width: 768px) {
+          .model-repair-grid {
+            grid-template-columns: 1fr !important;
+            gap: 14px !important;
+          }
 
-  @media (max-width: 480px) {
-    .model-repair-grid {
-      grid-template-columns: 1fr !important;
-    }
-  }
-`}</style>
+          .repair-card {
+            width: 100% !important;
+            display: grid !important;
+            grid-template-columns: 38px 1fr auto !important;
+            align-items: center !important;
+            gap: 14px !important;
+            padding: 20px 16px !important;
+            border-radius: 20px !important;
+          }
+
+          .repair-card h3 {
+            margin: 0 !important;
+            font-size: 17px !important;
+            line-height: 1.3 !important;
+          }
+
+          .repair-card p {
+            margin: 0 !important;
+          }
+
+          .repair-price-block {
+            text-align: right !important;
+            min-width: 92px !important;
+          }
+
+          .repair-card:hover,
+          .btn:hover {
+            transform: none !important;
+          }
+
+          .cta-model {
+            margin: 30px 16px 60px !important;
+            padding: 34px 22px !important;
+            text-align: left !important;
+          }
+
+          .cta-model h2 {
+            font-size: 34px !important;
+            line-height: 1.2 !important;
+          }
+
+          .cta-model-buttons {
+            justify-content: flex-start !important;
+            flex-direction: column !important;
+          }
+        }
+
+        @media (max-width: 420px) {
+          .repair-card {
+            grid-template-columns: 34px 1fr !important;
+          }
+
+          .repair-price-block {
+            grid-column: 2;
+            text-align: left !important;
+            margin-top: 8px;
+          }
+        }
+      `}</style>
     </main>
   );
 }
@@ -207,8 +242,9 @@ const eyebrow = {
 };
 
 const title = {
-  fontSize: "58px",
+  fontSize: "clamp(38px, 7vw, 58px)",
   margin: "0 0 24px",
+  lineHeight: "1.08",
 };
 
 const subtitle = {
@@ -239,17 +275,28 @@ const card = {
   background: "rgba(255,255,255,0.045)",
   border: "1px solid rgba(255,255,255,0.1)",
   borderRadius: "22px",
-  padding: "30px",
+  padding: "28px",
+};
+
+const icon = {
+  fontSize: "22px",
 };
 
 const cardTitle = {
   fontSize: "18px",
-  marginBottom: "16px",
+  margin: "0 0 16px",
 };
 
 const priceText = {
   color: "#D4AF37",
   fontSize: "17px",
+  margin: 0,
+};
+
+const mutedText = {
+  color: "#777",
+  marginTop: "10px",
+  fontSize: "14px",
 };
 
 const cta = {
@@ -296,19 +343,4 @@ const darkButton = {
   borderRadius: "14px",
   textDecoration: "none",
   background: "rgba(255,255,255,0.04)",
-};
-const mutedText = {
-  color: "#777",
-  marginTop: "10px",
-  fontSize: "14px",
-};
-const cardTop = {
-  display: "flex",
-  alignItems: "center",
-  gap: "12px",
-  marginBottom: "14px",
-};
-
-const icon = {
-  fontSize: "22px",
 };
