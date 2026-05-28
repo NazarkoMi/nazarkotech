@@ -76,7 +76,7 @@ const repairsList = modelData?.repairs || repairs;
           Популярні ремонти
         </h2>
 
-        <div style={grid}>
+        <div style={grid} className="model-repair-grid">
           {repairsList.map((repair) => (
   <div
     key={repair.title}
@@ -136,24 +136,52 @@ const repairsList = modelData?.repairs || repairs;
       </section>
 
       <style>{`
-        .repair-card,
-        .btn {
-          transition: all 0.25s ease;
-        }
+  * {
+    box-sizing: border-box;
+  }
 
-        .repair-card:hover {
-          transform: translateY(-6px) scale(1.03);
-          border-color: rgba(212,175,55,0.65) !important;
-          box-shadow:
-            0 20px 70px rgba(212,175,55,0.16),
-            0 0 40px rgba(212,175,55,0.08);
-        }
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
 
-        .btn:hover {
-          transform: translateY(-3px);
-          box-shadow: 0 14px 40px rgba(212,175,55,0.22);
-        }
-      `}</style>
+  main {
+    overflow-x: hidden;
+  }
+
+  .repair-card,
+  .btn {
+    transition: all 0.25s ease;
+  }
+
+  .repair-card:hover {
+    transform: translateY(-6px) scale(1.03);
+    border-color: rgba(212,175,55,0.65) !important;
+    box-shadow:
+      0 20px 70px rgba(212,175,55,0.16),
+      0 0 40px rgba(212,175,55,0.08);
+  }
+
+  .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 40px rgba(212,175,55,0.22);
+  }
+
+  @media (max-width: 768px) {
+    .repair-card:hover,
+    .btn:hover {
+      transform: none;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .model-repair-grid {
+      grid-template-columns: 1fr !important;
+    }
+  }
+`}</style>
     </main>
   );
 }
@@ -203,7 +231,7 @@ const sectionTitle = {
 
 const grid = {
   display: "grid",
-  gridTemplateColumns: "repeat(4, 1fr)",
+  gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
   gap: "16px",
 };
 
