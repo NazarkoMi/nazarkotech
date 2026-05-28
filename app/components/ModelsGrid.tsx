@@ -71,6 +71,7 @@ const modelCard = {
   display: "block",
   background: "rgba(255,255,255,0.045)",
   border: "1px solid rgba(255,255,255,0.1)",
+  boxShadow: "0 10px 30px rgba(0,0,0,0.25)",
   borderRadius: "15px",
   padding: "14px",
   color: "#F5F5F5",
