@@ -66,6 +66,12 @@ export default async function ModelPage({ params }: Props) {
     <main style={page}>
       <Header />
 
+      <div style={backWrap}>
+  <Link href="/" style={backButton}>
+    ← На головну
+  </Link>
+</div>
+
       <section style={hero}>
         <p style={eyebrow}>NazarkoTech · Ремонт iPhone</p>
 
@@ -343,4 +349,23 @@ const darkButton = {
   borderRadius: "14px",
   textDecoration: "none",
   background: "rgba(255,255,255,0.04)",
+};
+
+const backWrap = {
+  maxWidth: "1180px",
+  margin: "0 auto",
+  padding: "20px 24px 0",
+};
+
+const backButton = {
+  color: "#D4AF37",
+  textDecoration: "none",
+  fontSize: "15px",
+  border: "1px solid rgba(212,175,55,0.25)",
+  padding: "10px 16px",
+  borderRadius: "14px",
+  display: "inline-flex",
+  alignItems: "center",
+  gap: "8px",
+  background: "rgba(212,175,55,0.05)",
 };
