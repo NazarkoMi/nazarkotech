@@ -16,7 +16,11 @@ export const metadata: Metadata = {
   title: "NazarkoTech | Premium iPhone Service у Львові",
 
   description:
-    "Професійний ремонт iPhone у Львові: заміна екрана, акумулятора, заднього скла, діагностика та інші роботи.",
+    "Професійний ремонт iPhone у Львові.",
+
+  icons: {
+    icon: "/favicon.png",
+  },
 };
 
 export default function RootLayout({
