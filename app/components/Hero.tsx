@@ -70,8 +70,8 @@ const hero = {
   maxWidth: "1180px",
   margin: "0 auto",
   display: "grid",
-  gridTemplateColumns: "1fr 360px",
-  gap: "70px",
+  gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+  gap: "50px",
   alignItems: "center",
 };
 
@@ -82,14 +82,14 @@ const eyebrow = {
 };
 
 const title = {
-  fontSize: "68px",
+  fontSize: "clamp(42px, 8vw, 68px)",
   lineHeight: "1.05",
   margin: "0 0 24px",
   maxWidth: "720px",
 };
 
 const subtitle = {
-  fontSize: "19px",
+  fontSize: "clamp(16px, 2vw, 19px)",
   color: "#A3A3A3",
   lineHeight: "1.65",
   maxWidth: "700px",

@@ -15,14 +15,16 @@ export default function Header() {
 const header = {
   position: "sticky" as const,
   top: 0,
-  zIndex: 10,
-  display: "flex",
-  justifyContent: "space-between",
-  alignItems: "center",
-  padding: "18px 32px",
-  borderBottom: "1px solid rgba(255,255,255,0.08)",
-  background: "rgba(5,5,5,0.78)",
-  backdropFilter: "blur(16px)",
+  zIndex: 1000,
+
+  backdropFilter: "blur(14px)",
+  WebkitBackdropFilter: "blur(14px)",
+
+  background: "rgba(5,5,5,0.72)",
+
+  borderBottom: "1px solid rgba(255,255,255,0.06)",
+
+  padding: "18px 24px",
 };
 
 const logo = {
@@ -38,4 +40,12 @@ const smallGoldButton = {
   textDecoration: "none",
   fontWeight: "bold",
   fontSize: "13px",
+};
+const nav = {
+  maxWidth: "1180px",
+  margin: "0 auto",
+
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
 };

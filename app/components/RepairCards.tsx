@@ -10,7 +10,7 @@ export default function RepairCards() {
     <section style={section}>
       <h2 style={sectionTitle}>Популярні ремонти</h2>
 
-      <div style={repairGrid}>
+      <div style={repairGrid} className="repair-grid">
         {repairs.map(([title, price, time]) => (
           <div
             key={title}
