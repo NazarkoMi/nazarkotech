@@ -5,64 +5,96 @@ import ModelsGrid from "./components/ModelsGrid";
 
 export default function Home() {
   return (
-    <style>{`
-  * {
-    box-sizing: border-box;
-  }
+    <main style={page}>
+      <Header />
+      <Hero />
+      <RepairCards />
+      <ModelsGrid />
 
-  html,
-  body {
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-    scroll-behavior: smooth;
-  }
+      <section style={ctaWrap}>
+        <h2 style={ctaTitle}>Записатись на ремонт</h2>
 
-  main {
-    overflow-x: hidden;
-  }
+        <p style={ctaText}>
+          Напиши у Telegram або Viber, вкажи модель iPhone та проблему.
+        </p>
 
-  .repair-card,
-  .model-card,
-  .btn {
-    transition: all 0.25s ease;
-  }
+        <div style={buttonCenter}>
+          <a href="https://t.me/NazarkoMi" style={goldButton} className="btn">
+            Telegram
+          </a>
 
-  .repair-card:hover,
-  .model-card:hover {
-    transform: translateY(-6px) scale(1.03);
-    background: rgba(212,175,55,0.08);
-    border-color: rgba(212, 175, 55, 0.65) !important;
-    box-shadow:
-      0 20px 70px rgba(212, 175, 55, 0.16),
-      0 0 40px rgba(212, 175, 55, 0.08);
-    background: rgba(255,255,255,0.06);
-  }
+          <a
+            href="viber://chat?number=%2B380686293605"
+            style={darkButton}
+            className="btn"
+          >
+            Viber
+          </a>
+        </div>
+      </section>
 
-  .btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 14px 40px rgba(212, 175, 55, 0.22);
-  }
+      <footer style={footer}>
+        © 2026 NazarkoTech · Львів · +380686293605
+      </footer>
 
-  @media (max-width: 768px) {
-    .repair-card:hover,
-    .model-card:hover,
-    .btn:hover {
-      transform: none;
-    }
+      <style>{`
+        * {
+          box-sizing: border-box;
+        }
 
-    .repair-grid {
-      grid-template-columns: 1fr 1fr !important;
-    }
-  }
+        html,
+        body {
+          margin: 0;
+          padding: 0;
+          overflow-x: hidden;
+          scroll-behavior: smooth;
+        }
 
-  @media (max-width: 430px) {
-    .repair-grid {
-      grid-template-columns: 1fr 1fr !important;
-      gap: 12px !important;
-    }
-  }
-`}</style>
+        main {
+          overflow-x: hidden;
+        }
+
+        .repair-card,
+        .model-card,
+        .btn {
+          transition: all 0.25s ease;
+        }
+
+        .repair-card:hover,
+        .model-card:hover {
+          transform: translateY(-6px) scale(1.03);
+          border-color: rgba(212, 175, 55, 0.65) !important;
+          box-shadow:
+            0 20px 70px rgba(212, 175, 55, 0.16),
+            0 0 40px rgba(212, 175, 55, 0.08);
+          background: rgba(255,255,255,0.06);
+        }
+
+        .btn:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 14px 40px rgba(212, 175, 55, 0.22);
+        }
+
+        @media (max-width: 768px) {
+          .repair-card:hover,
+          .model-card:hover,
+          .btn:hover {
+            transform: none;
+          }
+
+          .repair-grid {
+            grid-template-columns: 1fr 1fr !important;
+          }
+        }
+
+        @media (max-width: 430px) {
+          .repair-grid {
+            grid-template-columns: 1fr 1fr !important;
+            gap: 12px !important;
+          }
+        }
+      `}</style>
+    </main>
   );
 }
 

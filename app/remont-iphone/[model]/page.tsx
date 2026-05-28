@@ -42,7 +42,7 @@ export async function generateMetadata(
     modelData?.name || formatModel(resolvedParams.model);
 
   return {
-    title: `Ремонт ${modelName} у Львові | NazarkoTech`,
+    title: `Ремонт ${modelName} у Львові | NazarkoTech.`,
     description: `Професійний ремонт ${modelName} у Львові. Заміна скла, акумулятора, заднього скла, камер та інших компонентів.`,
   };
 }
@@ -58,7 +58,7 @@ const repairsList = modelData?.repairs || repairs;
         <Header />
         <section style={hero}>
         <p style={eyebrow}>
-          NazarkoTech · Ремонт iPhone
+          NazarkoTech. · Ремонт iPhone
         </p>
 
         <h1 style={title}>
