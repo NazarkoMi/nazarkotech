@@ -6,9 +6,11 @@ import RepairCategories from "./components/RepairCategories";
 import WhyUs from "./components/WhyUs";
 import Reviews from "./components/Reviews";
 import OurWorks from "./components/OurWorks";
+import FloatingTelegram from "./components/FloatingTelegram";
 
 export default function Home() {
   return (
+    
     <main style={page}>
       <Header />
       <Hero />

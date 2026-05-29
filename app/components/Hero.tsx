@@ -3,13 +3,15 @@ export default function Hero() {
     <section style={heroWrap}>
       <div style={hero}>
         <div>
-          <p style={eyebrow}>Premium iPhone Service · Львів</p>
+          <p style={eyebrow}>Service NazarkoTech · Львів та Нововолинськ</p>
 
           <h1 style={title}>
-            Професійний ремонт, де важлива кожна деталь
+            Ремонт та обслуговування смартфонів, ПК, ноутбуків та консолей
           </h1>
 
+
           <p style={subtitle}>
+            Якісний ремонт iPhone, Android, ноутбуків, ПК, PlayStation та Xbox. Безкоштовна діагностика, чесні ціни та швидке виконання робіт.
             Заміна екрану на оригінал або аналог, акумулятора,
             заднього скла, корпусу, камер та інших компонентів,
             а також переклейка екранів за приємною ціною.
