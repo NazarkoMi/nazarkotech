@@ -8,6 +8,11 @@ export default function Header() {
       <a href="https://t.me/NazarkoMi" style={smallGoldButton} className="btn">
         Telegram
       </a>
+
+<a href="/contacts" style={navLink}>
+  Контакти
+</a>
+
     </header>
   );
 }
@@ -30,6 +35,13 @@ const header = {
 const logo = {
   fontSize: "22px",
   fontWeight: "bold",
+};
+
+const navLink = {
+  color: "white",
+  textDecoration: "none",
+  fontSize: "14px",
+  marginRight: "16px",
 };
 
 const smallGoldButton = {

@@ -38,7 +38,7 @@ export default function Home() {
       </section>
 
       <footer style={footer}>
-        © 2026 NazarkoTech · Львів · +380686293605
+        © 2026 NazarkoTech · Львів та Нововолинськ · +380686293605
       </footer>
 
       <style>{`
@@ -92,6 +92,13 @@ export default function Home() {
           .btn:hover {
             transform: none;
           }
+
+          @media (max-width: 768px) {
+  h1 {
+    font-size: 42px !important;
+    line-height: 1.1 !important;
+  }
+}
 
           .repair-grid {
             grid-template-columns: 1fr 1fr !important;

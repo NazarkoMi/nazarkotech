@@ -13,10 +13,25 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "NazarkoTech | Premium iPhone Service у Львові",
+  title:
+    "NazarkoTech — ремонт iPhone, Android, ноутбуків, ПК та консолей у Львові та Нововолинську",
 
   description:
-    "Професійний ремонт iPhone у Львові.",
+    "Ремонт iPhone, Android, ноутбуків, ПК, PlayStation та Xbox. Львів та Нововолинськ. Безкоштовна діагностика, якісне обслуговування та консультація.",
+
+  keywords: [
+    "NazarkoTech",
+    "ремонт iPhone Львів",
+    "ремонт Android Львів",
+    "ремонт ноутбуків Львів",
+    "ремонт ПК Львів",
+    "ремонт PlayStation Львів",
+    "ремонт Xbox Львів",
+    "ремонт телефонів Нововолинськ",
+    "ремонт ноутбуків Нововолинськ",
+  ],
+
+  authors: [{ name: "NazarkoTech" }],
 
   icons: {
     icon: "/favicon.png",
@@ -30,7 +45,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="uk"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">{children}</body>
