@@ -2,12 +2,14 @@ import Header from "./components/Header";
 import Hero from "./components/Hero";
 import RepairCards from "./components/RepairCards";
 import ModelsGrid from "./components/ModelsGrid";
+import RepairCategories from "./components/RepairCategories";
 
 export default function Home() {
   return (
     <main style={page}>
       <Header />
       <Hero />
+      <RepairCategories />
       <RepairCards />
       <ModelsGrid />
 
@@ -55,14 +57,13 @@ export default function Home() {
           overflow-x: hidden;
         }
 
-        .repair-card,
-        .model-card,
-        .btn {
+        
           transition: all 0.25s ease;
         }
 
         .repair-card:hover,
-        .model-card:hover {
+          .model-card:hover,
+          .category-card:hover {
           transform: translateY(-6px) scale(1.03);
           border-color: rgba(212, 175, 55, 0.65) !important;
           box-shadow:

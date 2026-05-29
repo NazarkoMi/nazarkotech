@@ -29,6 +29,7 @@ export default function RepairCards() {
   );
 }
 
+
 const section = {
   maxWidth: "1180px",
   margin: "0 auto",
