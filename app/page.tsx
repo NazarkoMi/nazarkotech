@@ -5,6 +5,7 @@ import ModelsGrid from "./components/ModelsGrid";
 import RepairCategories from "./components/RepairCategories";
 import WhyUs from "./components/WhyUs";
 import Reviews from "./components/Reviews";
+import OurWorks from "./components/OurWorks";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <Reviews />
       <RepairCards />
       <ModelsGrid />
+      <OurWorks />
 
       <section style={ctaWrap}>
         <h2 style={ctaTitle}>Записатись на ремонт</h2>
@@ -62,10 +64,11 @@ export default function Home() {
         }
 
         .repair-card,
-        .model-card,
-        .category-card,
-        .why-card,
+.model-card,
+.category-card,
+.why-card,
 .review-card,
+.work-card,
 .btn {
           transition: all 0.25s ease;
         }
@@ -74,7 +77,8 @@ export default function Home() {
 .model-card:hover,
 .category-card:hover,
 .why-card:hover,
-.review-card:hover {
+.review-card:hover,
+.work-card:hover {
           transform: translateY(-6px) scale(1.03);
           border-color: rgba(212, 175, 55, 0.65) !important;
           box-shadow:
