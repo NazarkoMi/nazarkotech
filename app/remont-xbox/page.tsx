@@ -33,7 +33,7 @@ export default function PcRepairPage() {
       <section style={section}>
         <h2 style={sectionTitle}>Популярні послуги</h2>
 
-        <div style={grid}>
+        <div style={grid} className="service-grid">
           {services.map((service) => (
             <div key={service.title} style={card} className="service-card">
               <span style={icon}>{service.icon}</span>
@@ -67,76 +67,98 @@ export default function PcRepairPage() {
       </section>
 
       <style>{`
-        * { box-sizing: border-box; }
+  * {
+    box-sizing: border-box;
+  }
 
-        html, body {
-          margin: 0;
-          padding: 0;
-          overflow-x: hidden;
-        }
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
 
-        main { overflow-x: hidden; }
+  main {
+    overflow-x: hidden;
+  }
 
-        .service-card,
-        .btn {
-          transition: all 0.25s ease;
-        }
+  .service-card,
+  .btn {
+    transition: all 0.25s ease;
+  }
 
-        .service-card:hover {
-          transform: translateY(-6px) scale(1.03);
-          border-color: rgba(212,175,55,0.65) !important;
-          box-shadow:
-            0 20px 70px rgba(212,175,55,0.16),
-            0 0 40px rgba(212,175,55,0.08);
-        }
+  .service-card:hover {
+    transform: translateY(-6px) scale(1.03);
+    border-color: rgba(212,175,55,0.65) !important;
+    box-shadow:
+      0 20px 70px rgba(212,175,55,0.16),
+      0 0 40px rgba(212,175,55,0.08);
+  }
 
-        .btn:hover {
-          transform: translateY(-3px);
-          box-shadow: 0 14px 40px rgba(212,175,55,0.22);
-        }
+  .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 40px rgba(212,175,55,0.22);
+  }
 
-        @media (max-width: 768px) {
-          .service-card:hover,
-          .btn:hover {
-            transform: none !important;
-          }
+  @media (max-width: 768px) {
+    section {
+      padding-left: 18px !important;
+      padding-right: 18px !important;
+    }
 
-          .service-card {
-            display: grid !important;
-            grid-template-columns: 38px 1fr auto !important;
-            align-items: center !important;
-            gap: 14px !important;
-            padding: 20px 16px !important;
-          }
+    .service-grid {
+      grid-template-columns: 1fr !important;
+      gap: 14px !important;
+    }
 
-          .service-card h3 {
-            margin: 0 !important;
-            font-size: 17px !important;
-            line-height: 1.3 !important;
-          }
+    .service-card {
+      width: 100% !important;
+      display: grid !important;
+      grid-template-columns: 34px 1fr !important;
+      align-items: center !important;
+      gap: 14px !important;
+      padding: 20px 16px !important;
+      border-radius: 20px !important;
+    }
 
-          .service-card p {
-            margin: 0 !important;
-          }
+    .service-card h3 {
+      margin: 0 !important;
+      font-size: 18px !important;
+      line-height: 1.3 !important;
+    }
 
-          .service-price-block {
-            text-align: right !important;
-            min-width: 90px !important;
-          }
-        }
+    .service-card p {
+      margin: 0 !important;
+    }
 
-        @media (max-width: 420px) {
-          .service-card {
-            grid-template-columns: 34px 1fr !important;
-          }
+    .service-price-block {
+      grid-column: 2;
+      text-align: left !important;
+      margin-top: 8px;
+    }
 
-          .service-price-block {
-            grid-column: 2;
-            text-align: left !important;
-            margin-top: 8px;
-          }
-        }
-      `}</style>
+    .service-card:hover,
+    .btn:hover {
+      transform: none !important;
+    }
+
+    .cta-model {
+      margin: 30px 18px 60px !important;
+      padding: 34px 22px !important;
+      text-align: left !important;
+    }
+
+    .cta-model h2 {
+      font-size: 32px !important;
+      line-height: 1.2 !important;
+    }
+
+    .cta-model-buttons {
+      justify-content: flex-start !important;
+      flex-direction: column !important;
+    }
+  }
+`}</style>
     </main>
   );
 }
