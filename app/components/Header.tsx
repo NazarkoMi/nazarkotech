@@ -1,21 +1,19 @@
 export default function Header() {
   return (
     <header style={header}>
-      <div style={nav}>
-        <div style={logo}>
-          Nazarko<span style={{ color: "#D4AF37" }}>Tech</span>
-        </div>
+      <div style={navButtons}>
+  <a href="/price" style={contactBtn}>
+    Ціни
+  </a>
 
-        <div style={navButtons}>
-          <a href="/contacts" style={contactBtn}>
-            Контакти
-          </a>
+  <a href="/contacts" style={contactBtn}>
+    Контакти
+  </a>
 
-          <a href="https://t.me/NazarkoMi" style={telegramBtn}>
-            Telegram
-          </a>
-        </div>
-      </div>
+  <a href="https://t.me/NazarkoMi" style={telegramBtn}>
+    Telegram
+  </a>
+</div>
     </header>
   );
 }
