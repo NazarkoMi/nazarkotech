@@ -298,7 +298,9 @@ const icon = {
 
 const cardTitle = {
   fontSize: "18px",
-  margin: "0 0 16px",
+  marginBottom: "16px",
+  whiteSpace: "pre-line" as const,
+  lineHeight: "1.4",
 };
 
 const priceText = {
