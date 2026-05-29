@@ -9,20 +9,13 @@ export default function Hero() {
             Ремонт та обслуговування смартфонів, ПК, ноутбуків та консолей
           </h1>
 
-
           <p style={subtitle}>
-            Якісний ремонт iPhone, Android, ноутбуків, ПК, PlayStation та Xbox. Безкоштовна діагностика, чесні ціни та швидке виконання робіт.
-            Заміна екрану на оригінал або аналог, акумулятора,
-            заднього скла, корпусу, камер та інших компонентів,
-            а також переклейка екранів за приємною ціною.
+            Якісний ремонт iPhone, Android, ноутбуків, ПК, PlayStation та Xbox.
+            Безкоштовна діагностика, чесні ціни та швидке виконання робіт.
           </p>
 
           <div style={buttonRow}>
-            <a
-              href="tel:+380686293605"
-              style={goldButton}
-              className="btn"
-            >
+            <a href="tel:+380686293605" style={goldButton} className="btn">
               Подзвонити
             </a>
 
@@ -36,28 +29,14 @@ export default function Hero() {
           </div>
         </div>
 
-        <div style={phoneArea}>
+        <div style={imageArea}>
           <div style={glow} />
 
-          <div style={phone}>
-            <div style={phoneInner}>
-              <div style={island} />
-
-              <p style={phoneMiniText}>NAZARKOTECH</p>
-
-              <h2 style={phoneTitle}>
-                iPhone
-                <br />
-                Service
-              </h2>
-
-              <div style={goldLine} />
-
-              <p style={phoneDesc}>
-                Premium black & gold repair experience
-              </p>
-            </div>
-          </div>
+          <img
+            src="/hero-devices.png"
+            alt="Ремонт смартфонів, ноутбуків, ПК та консолей"
+            style={heroImage}
+          />
         </div>
       </div>
     </section>
@@ -121,71 +100,27 @@ const darkButton = {
   background: "rgba(255,255,255,0.04)",
 };
 
-const phoneArea = {
+const imageArea = {
   position: "relative" as const,
   display: "flex",
   justifyContent: "center",
+  alignItems: "center",
 };
 
 const glow = {
   position: "absolute" as const,
-  width: "280px",
-  height: "280px",
+  width: "360px",
+  height: "360px",
   borderRadius: "50%",
   background: "rgba(212,175,55,0.22)",
-  filter: "blur(90px)",
+  filter: "blur(100px)",
 };
 
-const phone = {
+const heroImage = {
   position: "relative" as const,
-  width: "270px",
-  height: "540px",
-  borderRadius: "44px",
-  background: "linear-gradient(145deg, #202020, #050505)",
-  border: "1px solid rgba(255,255,255,0.16)",
-  boxShadow: "0 50px 130px rgba(212,175,55,0.18)",
-  padding: "14px",
-};
-
-const phoneInner = {
-  height: "100%",
-  borderRadius: "34px",
-  background: "linear-gradient(180deg, #0b0b0b, #000)",
-  border: "1px solid rgba(255,255,255,0.08)",
-  padding: "24px",
-  textAlign: "center" as const,
-};
-
-const island = {
-  width: "82px",
-  height: "22px",
-  background: "#000",
-  borderRadius: "999px",
-  margin: "0 auto 100px",
-};
-
-const phoneMiniText = {
-  color: "#D4AF37",
-  letterSpacing: "4px",
-  fontSize: "11px",
-};
-
-const phoneTitle = {
-  fontSize: "34px",
-  lineHeight: "1.08",
-  margin: "18px 0 0",
-};
-
-const goldLine = {
-  width: "56px",
-  height: "3px",
-  background: "#D4AF37",
-  borderRadius: "999px",
-  margin: "26px auto",
-};
-
-const phoneDesc = {
-  color: "#777",
-  fontSize: "13px",
-  lineHeight: "1.6",
+  width: "100%",
+  maxWidth: "650px",
+  height: "auto",
+  objectFit: "contain" as const,
+  filter: "drop-shadow(0 35px 80px rgba(212,175,55,0.18))",
 };
