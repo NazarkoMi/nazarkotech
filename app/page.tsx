@@ -3,6 +3,7 @@ import Hero from "./components/Hero";
 import RepairCards from "./components/RepairCards";
 import ModelsGrid from "./components/ModelsGrid";
 import RepairCategories from "./components/RepairCategories";
+import WhyUs from "./components/WhyUs";
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
       <Header />
       <Hero />
       <RepairCategories />
+      <WhyUs />
       <RepairCards />
       <ModelsGrid />
 
@@ -17,7 +19,7 @@ export default function Home() {
         <h2 style={ctaTitle}>Записатись на ремонт</h2>
 
         <p style={ctaText}>
-          Напиши у Telegram або Viber, вкажи модель iPhone та проблему.
+          Напиши у Telegram або Viber, вкажи модель пристрою та проблему.
         </p>
 
         <div style={buttonCenter}>
@@ -57,13 +59,18 @@ export default function Home() {
           overflow-x: hidden;
         }
 
-        
+        .repair-card,
+        .model-card,
+        .category-card,
+        .why-card,
+        .btn {
           transition: all 0.25s ease;
         }
 
         .repair-card:hover,
-          .model-card:hover,
-          .category-card:hover {
+        .model-card:hover,
+        .category-card:hover,
+        .why-card:hover {
           transform: translateY(-6px) scale(1.03);
           border-color: rgba(212, 175, 55, 0.65) !important;
           box-shadow:
@@ -80,6 +87,8 @@ export default function Home() {
         @media (max-width: 768px) {
           .repair-card:hover,
           .model-card:hover,
+          .category-card:hover,
+          .why-card:hover,
           .btn:hover {
             transform: none;
           }
