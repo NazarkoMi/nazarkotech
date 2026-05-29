@@ -4,6 +4,7 @@ import RepairCards from "./components/RepairCards";
 import ModelsGrid from "./components/ModelsGrid";
 import RepairCategories from "./components/RepairCategories";
 import WhyUs from "./components/WhyUs";
+import Reviews from "./components/Reviews";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <Hero />
       <RepairCategories />
       <WhyUs />
+      <Reviews />
       <RepairCards />
       <ModelsGrid />
 
@@ -63,14 +65,16 @@ export default function Home() {
         .model-card,
         .category-card,
         .why-card,
-        .btn {
+.review-card,
+.btn {
           transition: all 0.25s ease;
         }
 
         .repair-card:hover,
-        .model-card:hover,
-        .category-card:hover,
-        .why-card:hover {
+.model-card:hover,
+.category-card:hover,
+.why-card:hover,
+.review-card:hover {
           transform: translateY(-6px) scale(1.03);
           border-color: rgba(212, 175, 55, 0.65) !important;
           box-shadow:
