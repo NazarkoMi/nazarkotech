@@ -47,7 +47,7 @@ export default function ModelsGrid() {
       <h2 style={sectionTitle}>Обери свою модель</h2>
 
       <p style={sectionDesc}>
-        Для кожної моделі буде окрема сторінка з доступними ремонтами.
+        Оберіть модель пристрою, щоб переглянути актуальні ціни на ремонт та доступні послуги.
       </p>
 
       <div style={modelGrid}>
