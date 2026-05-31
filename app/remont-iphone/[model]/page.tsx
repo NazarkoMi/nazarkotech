@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { iphoneRepairs } from "../../data/iphoneRepairs";
 import Header from "../../components/Header";
 import Link from "next/link";
+import BatteryInfo from "../../components/BatteryInfo";
 
 type Props = {
   params: Promise<{
@@ -52,6 +53,23 @@ function getRepairIcon(title: string) {
   return "🔧";
 }
 
+function getRepairInfo(title: string) {
+  if (title.includes("Невідома деталь")) {
+    return "У налаштуваннях iPhone буде відображатись: Акумулятор — Невідома деталь.";
+  }
+
+  if (title.includes("Вживана деталь")) {
+    return "У налаштуваннях iPhone буде відображатись: Акумулятор — Вживана деталь, стан 100%.";
+  }
+
+  if (title.includes("Нова оригінальна деталь")) {
+    return "У налаштуваннях iPhone буде відображатись: Акумулятор — Нова оригінальна деталь, стан 100%.";
+  }
+
+  return "";
+}
+
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const resolvedParams = await params;
   const modelData = iphoneRepairs[resolvedParams.model];
@@ -95,21 +113,30 @@ export default async function ModelPage({ params }: Props) {
         <h2 style={sectionTitle}>Популярні ремонти</h2>
 
         <div style={grid} className="model-repair-grid">
-          {repairsList.map((repair) => (
-            <div key={repair.title} style={card} className="repair-card">
-              <span style={icon}>{getRepairIcon(repair.title)}</span>
+          {repairsList.map((repair) => {
+  const repairInfo = getRepairInfo(repair.title);
 
-              <h3 style={cardTitle}>{repair.title}</h3>
+  return (
+    <div
+      key={repair.title}
+      style={card}
+      className="repair-card"
+      data-info={repairInfo || undefined}
+    >
+      <span style={icon}>{getRepairIcon(repair.title)}</span>
 
-              <div className="repair-price-block">
-                <p style={priceText}>{repair.price}</p>
-                <p style={mutedText}>{repair.time}</p>
-              </div>
-            </div>
-          ))}
+      <h3 style={cardTitle}>{repair.title}</h3>
+
+      <div className="repair-price-block">
+        <p style={priceText}>{repair.price}</p>
+        <p style={mutedText}>{repair.time}</p>
+      </div>
+    </div>
+  );
+})}
         </div>
       </section>
-
+      <BatteryInfo />
       <section style={cta} className="cta-model">
         <h2 style={ctaTitle}>Записатись на ремонт</h2>
 
@@ -133,104 +160,105 @@ export default async function ModelPage({ params }: Props) {
       </section>
 
       <style>{`
-        * {
-          box-sizing: border-box;
-        }
+  * {
+    box-sizing: border-box;
+  }
 
-        html,
-        body {
-          margin: 0;
-          padding: 0;
-          overflow-x: hidden;
-        }
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
 
-        main {
-          overflow-x: hidden;
-        }
+  main {
+    overflow-x: hidden;
+  }
 
-        .repair-card,
-        .btn {
-          transition: all 0.25s ease;
-        }
+  .repair-card,
+  .btn {
+    transition: all 0.25s ease;
+  }
 
-        .repair-card:hover {
-          transform: translateY(-6px) scale(1.03);
-          border-color: rgba(212,175,55,0.65) !important;
-          box-shadow:
-            0 20px 70px rgba(212,175,55,0.16),
-            0 0 40px rgba(212,175,55,0.08);
-        }
+  .repair-card:hover {
+    transform: translateY(-6px) scale(1.03);
+    border-color: rgba(212,175,55,0.65) !important;
+    box-shadow:
+      0 20px 70px rgba(212,175,55,0.16),
+      0 0 40px rgba(212,175,55,0.08);
+  }
 
-        .btn:hover {
-          transform: translateY(-3px);
-          box-shadow: 0 14px 40px rgba(212,175,55,0.22);
-        }
+  .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 40px rgba(212,175,55,0.22);
+  }
 
-        @media (max-width: 768px) {
-          .model-repair-grid {
-            grid-template-columns: 1fr !important;
-            gap: 14px !important;
-          }
+  @media (max-width: 768px) {
+    .model-repair-grid {
+      grid-template-columns: 1fr !important;
+      gap: 14px !important;
+    }
 
-          .repair-card {
-            width: 100% !important;
-            display: grid !important;
-            grid-template-columns: 38px 1fr auto !important;
-            align-items: center !important;
-            gap: 14px !important;
-            padding: 20px 16px !important;
-            border-radius: 20px !important;
-          }
+    .repair-card {
+      width: 100% !important;
+      display: grid !important;
+      grid-template-columns: 38px 1fr auto !important;
+      align-items: center !important;
+      gap: 14px !important;
+      padding: 20px 16px !important;
+      border-radius: 20px !important;
+    }
 
-          .repair-card h3 {
-            margin: 0 !important;
-            font-size: 17px !important;
-            line-height: 1.3 !important;
-          }
+    .repair-card h3 {
+      margin: 0 !important;
+      font-size: 17px !important;
+      line-height: 1.3 !important;
+    }
 
-          .repair-card p {
-            margin: 0 !important;
-          }
+    .repair-card p {
+      margin: 0 !important;
+    }
 
-          .repair-price-block {
-            text-align: right !important;
-            min-width: 92px !important;
-          }
+    .repair-price-block {
+      text-align: right !important;
+      min-width: 92px !important;
+    }
 
-          .repair-card:hover,
-          .btn:hover {
-            transform: none !important;
-          }
+    .repair-card:hover,
+    .btn:hover {
+      transform: none !important;
+    }
 
-          .cta-model {
-            margin: 30px 16px 60px !important;
-            padding: 34px 22px !important;
-            text-align: left !important;
-          }
+    .cta-model {
+      margin: 30px 16px 60px !important;
+      padding: 34px 22px !important;
+      text-align: left !important;
+    }
 
-          .cta-model h2 {
-            font-size: 34px !important;
-            line-height: 1.2 !important;
-          }
+    .cta-model h2 {
+      font-size: 34px !important;
+      line-height: 1.2 !important;
+    }
 
-          .cta-model-buttons {
-            justify-content: flex-start !important;
-            flex-direction: column !important;
-          }
-        }
+    .cta-model-buttons {
+      justify-content: flex-start !important;
+      flex-direction: column !important;
+    }
+  }
 
-        @media (max-width: 420px) {
-          .repair-card {
-            grid-template-columns: 34px 1fr !important;
-          }
+  @media (max-width: 420px) {
+    .repair-card {
+      grid-template-columns: 34px 1fr !important;
+    }
 
-          .repair-price-block {
-            grid-column: 2;
-            text-align: left !important;
-            margin-top: 8px;
-          }
-        }
-      `}</style>
+    .repair-price-block {
+      grid-column: 2;
+      text-align: left !important;
+      margin-top: 8px;
+    }
+  }
+`}</style>
+
     </main>
   );
 }
