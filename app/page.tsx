@@ -6,11 +6,10 @@ import RepairCategories from "./components/RepairCategories";
 import WhyUs from "./components/WhyUs";
 import Reviews from "./components/Reviews";
 import OurWorks from "./components/OurWorks";
-import FloatingTelegram from "./components/FloatingTelegram";
+import FAQ from "./components/FAQ";
 
 export default function Home() {
   return (
-    
     <main style={page}>
       <Header />
       <Hero />
@@ -43,6 +42,8 @@ export default function Home() {
         </div>
       </section>
 
+      <FAQ />
+
       <footer style={footer}>
         © 2026 NazarkoTech · Львів та Нововолинськ · +380686293605
       </footer>
@@ -66,21 +67,21 @@ export default function Home() {
         }
 
         .repair-card,
-.model-card,
-.category-card,
-.why-card,
-.review-card,
-.work-card,
-.btn {
+        .model-card,
+        .category-card,
+        .why-card,
+        .review-card,
+        .work-card,
+        .btn {
           transition: all 0.25s ease;
         }
 
         .repair-card:hover,
-.model-card:hover,
-.category-card:hover,
-.why-card:hover,
-.review-card:hover,
-.work-card:hover {
+        .model-card:hover,
+        .category-card:hover,
+        .why-card:hover,
+        .review-card:hover,
+        .work-card:hover {
           transform: translateY(-6px) scale(1.03);
           border-color: rgba(212, 175, 55, 0.65) !important;
           box-shadow:
@@ -99,16 +100,16 @@ export default function Home() {
           .model-card:hover,
           .category-card:hover,
           .why-card:hover,
+          .review-card:hover,
+          .work-card:hover,
           .btn:hover {
             transform: none;
           }
 
-          @media (max-width: 768px) {
-  h1 {
-    font-size: 42px !important;
-    line-height: 1.1 !important;
-  }
-}
+          h1 {
+            font-size: 42px !important;
+            line-height: 1.1 !important;
+          }
 
           .repair-grid {
             grid-template-columns: 1fr 1fr !important;

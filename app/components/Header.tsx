@@ -5,7 +5,9 @@ export default function Header() {
   <a href="/price" style={contactBtn}>
     Ціни
   </a>
-
+    <a href="/works" style={contactBtn}>
+      Наші роботи
+    </a>
   <a href="/contacts" style={contactBtn}>
     Контакти
   </a>
