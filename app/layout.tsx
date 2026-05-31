@@ -14,11 +14,13 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://nazarko.tech"),
+
   title:
     "NazarkoTech — ремонт iPhone, Android, ноутбуків, ПК та консолей у Львові та Нововолинську",
 
   description:
-    "Ремонт iPhone, Android, ноутбуків, ПК, PlayStation та Xbox. Львів та Нововолинськ. Безкоштовна діагностика, якісне обслуговування та консультація.",
+    "Ремонт iPhone, Android, ноутбуків, ПК, PlayStation та Xbox. Безкоштовна діагностика. Львів та Нововолинськ.",
 
   keywords: [
     "NazarkoTech",
@@ -33,6 +35,23 @@ export const metadata: Metadata = {
   ],
 
   authors: [{ name: "NazarkoTech" }],
+
+  openGraph: {
+    title: "NazarkoTech",
+    description:
+      "Ремонт iPhone, Android, ноутбуків, ПК та консолей у Львові та Нововолинську.",
+    url: "https://nazarko.tech",
+    siteName: "NazarkoTech",
+    locale: "uk_UA",
+    type: "website",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+      },
+    ],
+  },
 
   icons: {
     icon: "/favicon.png",
