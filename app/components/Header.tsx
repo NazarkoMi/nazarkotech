@@ -8,6 +8,11 @@ export default function Header() {
     <a href="/works" style={contactBtn}>
       Наші роботи
     </a>
+
+      <a href="/about" style={contactBtn}>
+  Про нас
+</a>
+
   <a href="/contacts" style={contactBtn}>
     Контакти
   </a>
