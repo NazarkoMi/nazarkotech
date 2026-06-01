@@ -7,6 +7,7 @@ import WhyUs from "./components/WhyUs";
 import Reviews from "./components/Reviews";
 import OurWorks from "./components/OurWorks";
 import FAQ from "./components/FAQ";
+import Footer from "./components/Footer";
 
 export default function Home() {
   return (
@@ -44,9 +45,7 @@ export default function Home() {
 
       <FAQ />
 
-      <footer style={footer}>
-        © 2026 NazarkoTech · Львів та Нововолинськ · +380686293605
-      </footer>
+      <Footer />
 
       <style>{`
         * {
@@ -172,12 +171,4 @@ const buttonCenter = {
   gap: "14px",
   justifyContent: "center",
   marginTop: "28px",
-};
-
-const footer = {
-  maxWidth: "1180px",
-  margin: "0 auto",
-  padding: "28px 24px",
-  borderTop: "1px solid rgba(255,255,255,0.08)",
-  color: "#777",
 };
