@@ -136,7 +136,7 @@ export default async function ModelPage({ params }: Props) {
 })}
         </div>
       </section>
-      <BatteryInfo />
+      {model !== "android" && <BatteryInfo />}
       <section style={cta} className="cta-model">
         <h2 style={ctaTitle}>Записатись на ремонт</h2>
 
