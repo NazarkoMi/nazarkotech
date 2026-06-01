@@ -6,27 +6,13 @@ export default function Header() {
           Nazarko<span style={{ color: "#D4AF37" }}>Tech</span>
         </a>
 
-        <div style={navButtons} className="desktop-nav">
-          <a href="/price" style={contactBtn}>
-            Ціни
-          </a>
-
-          <a href="/works" style={contactBtn}>
-            Роботи
-          </a>
-
-          <a href="/warranty" style={contactBtn}>
-            Гарантія
-          </a>
-
-          <a href="/about" style={contactBtn}>
-            Про нас
-          </a>
-
-          <a href="/contacts" style={contactBtn}>
-            Контакти
-          </a>
-        </div>
+        <nav style={navButtons} className="desktop-nav">
+          <a href="/price" style={contactBtn}>Ціни</a>
+          <a href="/works" style={contactBtn}>Роботи</a>
+          <a href="/warranty" style={contactBtn}>Гарантія</a>
+          <a href="/about" style={contactBtn}>Про нас</a>
+          <a href="/contacts" style={contactBtn}>Контакти</a>
+        </nav>
 
         <a href="https://t.me/NazarkoMi" style={telegramBtn}>
           Telegram
@@ -34,7 +20,7 @@ export default function Header() {
       </div>
 
       <style>{`
-        @media (max-width: 768px) {
+        @media (max-width: 900px) {
           .desktop-nav {
             display: none !important;
           }
@@ -58,10 +44,10 @@ const header = {
 const nav = {
   maxWidth: "1180px",
   margin: "0 auto",
-  display: "flex",
-  justifyContent: "space-between",
+  display: "grid",
+  gridTemplateColumns: "auto 1fr auto",
   alignItems: "center",
-  gap: "20px",
+  gap: "22px",
 };
 
 const logo = {
@@ -75,9 +61,9 @@ const logo = {
 const navButtons = {
   display: "flex",
   alignItems: "center",
-  justifyContent: "flex-end",
-  gap: "14px",
-  flexWrap: "wrap" as const,
+  justifyContent: "center",
+  gap: "18px",
+  minWidth: 0,
 };
 
 const contactBtn = {
