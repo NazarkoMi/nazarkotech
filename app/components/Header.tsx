@@ -1,30 +1,37 @@
 export default function Header() {
   return (
     <header style={header}>
-      <div style={navButtons}>
-  <a href="/price" style={contactBtn}>
-    Ціни
-  </a>
-    <a href="/works" style={contactBtn}>
-      Наші роботи
-    </a>
-
-        <a href="/warranty" style={contactBtn}>
-           Гарантія
+      <div style={nav}>
+        <a href="/" style={logo}>
+          Nazarko<span style={{ color: "#D4AF37" }}>Tech</span>
         </a>
 
-        <a href="/about" style={contactBtn}>
-          Про нас
-        </a>
+        <div style={navButtons}>
+          <a href="/price" style={contactBtn}>
+            Ціни
+          </a>
 
-  <a href="/contacts" style={contactBtn}>
-    Контакти
-  </a>
+          <a href="/works" style={contactBtn}>
+            Роботи
+          </a>
 
-  <a href="https://t.me/NazarkoMi" style={telegramBtn}>
-    Telegram
-  </a>
-</div>
+          <a href="/warranty" style={contactBtn}>
+            Гарантія
+          </a>
+
+          <a href="/about" style={contactBtn}>
+            Про нас
+          </a>
+
+          <a href="/contacts" style={contactBtn}>
+            Контакти
+          </a>
+
+          <a href="https://t.me/NazarkoMi" style={telegramBtn}>
+            Telegram
+          </a>
+        </div>
+      </div>
     </header>
   );
 }
@@ -46,23 +53,30 @@ const nav = {
   display: "flex",
   justifyContent: "space-between",
   alignItems: "center",
+  gap: "20px",
 };
 
 const logo = {
+  color: "white",
+  textDecoration: "none",
   fontSize: "22px",
   fontWeight: "bold",
+  whiteSpace: "nowrap" as const,
 };
 
 const navButtons = {
   display: "flex",
   alignItems: "center",
+  justifyContent: "flex-end",
   gap: "14px",
+  flexWrap: "wrap" as const,
 };
 
 const contactBtn = {
   color: "white",
   textDecoration: "none",
   fontSize: "14px",
+  whiteSpace: "nowrap" as const,
 };
 
 const telegramBtn = {
@@ -73,4 +87,5 @@ const telegramBtn = {
   textDecoration: "none",
   fontWeight: "bold",
   fontSize: "13px",
+  whiteSpace: "nowrap" as const,
 };
