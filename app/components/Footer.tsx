@@ -18,7 +18,7 @@ export default function Footer() {
           <a href="/works" style={link}>Наші роботи</a>
           <a href="/price" style={link}>Ціни</a>
           <a href="/contacts" style={link}>Контакти</a>
-          <a href="/privacy">Політика конфіденційності</a>
+          <a href="/privacy" style={link}>Політика конфіденційності</a>
         </div>
       </div>
 

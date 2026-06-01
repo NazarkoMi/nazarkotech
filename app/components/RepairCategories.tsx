@@ -2,11 +2,11 @@ import Link from "next/link";
 
 const categories = [
   {
-    icon: "🍏",
-    title: "iPhone",
-    text: "Заміна екрана, батареї, скла, камер та інших компонентів.",
-    href: "/#models",
-  },
+  icon: "🍏",
+  title: "iPhone",
+  text: "Заміна екрана, батареї, скла, камер та інших компонентів.",
+  href: "#iphone-models",
+},
   {
     icon: "🤖",
     title: "Android",

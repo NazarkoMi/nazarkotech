@@ -43,7 +43,7 @@ const models = [
 
 export default function ModelsGrid() {
   return (
-    <section style={section}>
+    <section id="iphone-models" style={section}>
       <h2 style={sectionTitle}>Обери свою модель</h2>
 
       <p style={sectionDesc}>
@@ -70,6 +70,7 @@ const section = {
   maxWidth: "1180px",
   margin: "0 auto",
   padding: "45px 24px",
+  scrollMarginTop: "90px",
 };
 
 const sectionTitle = {
