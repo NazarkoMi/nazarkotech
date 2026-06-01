@@ -6,7 +6,7 @@ export default function Header() {
           Nazarko<span style={{ color: "#D4AF37" }}>Tech</span>
         </a>
 
-        <div style={navButtons}>
+        <div style={navButtons} className="desktop-nav">
           <a href="/price" style={contactBtn}>
             Ціни
           </a>
@@ -26,12 +26,20 @@ export default function Header() {
           <a href="/contacts" style={contactBtn}>
             Контакти
           </a>
-
-          <a href="https://t.me/NazarkoMi" style={telegramBtn}>
-            Telegram
-          </a>
         </div>
+
+        <a href="https://t.me/NazarkoMi" style={telegramBtn}>
+          Telegram
+        </a>
       </div>
+
+      <style>{`
+        @media (max-width: 768px) {
+          .desktop-nav {
+            display: none !important;
+          }
+        }
+      `}</style>
     </header>
   );
 }
