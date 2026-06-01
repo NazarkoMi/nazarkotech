@@ -140,9 +140,11 @@ export default async function ModelPage({ params }: Props) {
       <section style={cta} className="cta-model">
         <h2 style={ctaTitle}>Записатись на ремонт</h2>
 
-        <p style={ctaText}>
-          Напиши у Telegram або Viber, вкажи модель iPhone та проблему.
-        </p>
+          <p style={ctaText}>
+            {model === "android"
+            ? "Напиши у Telegram або Viber, вкажи модель смартфона та проблему."
+            : "Напиши у Telegram або Viber, вкажи модель iPhone та проблему."}
+          </p>
 
         <div style={buttonRow} className="cta-model-buttons">
           <Link href="https://t.me/NazarkoMi" style={goldButton} className="btn">
