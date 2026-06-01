@@ -9,9 +9,13 @@ export default function Header() {
       Наші роботи
     </a>
 
-      <a href="/about" style={contactBtn}>
-  Про нас
-</a>
+        <a href="/warranty" style={contactBtn}>
+           Гарантія
+        </a>
+
+        <a href="/about" style={contactBtn}>
+          Про нас
+        </a>
 
   <a href="/contacts" style={contactBtn}>
     Контакти
