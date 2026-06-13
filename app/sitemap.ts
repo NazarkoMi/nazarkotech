@@ -36,10 +36,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "iphone-15-pro-max",
 
     "iphone-16",
+    "iphone-16-plus",
     "iphone-16-pro",
     "iphone-16-pro-max",
 
     "iphone-17",
+    "iphone-17-air",
     "iphone-17-pro",
     "iphone-17-pro-max",
   ];

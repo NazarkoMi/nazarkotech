@@ -33,10 +33,12 @@ const models = [
   { name: "iPhone 15 Pro Max", slug: "iphone-15-pro-max" },
 
   { name: "iPhone 16", slug: "iphone-16" },
+  { name: "iPhone 16 Plus", slug: "iphone-16-plus" },
   { name: "iPhone 16 Pro", slug: "iphone-16-pro" },
   { name: "iPhone 16 Pro Max", slug: "iphone-16-pro-max" },
 
   { name: "iPhone 17", slug: "iphone-17" },
+  { name: "iPhone 17 Air", slug: "iphone-17-air" },
   { name: "iPhone 17 Pro", slug: "iphone-17-pro" },
   { name: "iPhone 17 Pro Max", slug: "iphone-17-pro-max" },
 ];
