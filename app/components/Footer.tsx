@@ -1,11 +1,13 @@
+import Link from "next/link";
+
 export default function Footer() {
   return (
     <footer style={footer}>
       <div style={inner}>
         <div>
-          <a href="/" style={logo}>
+          <Link href="/" style={logo}>
             Nazarko<span style={{ color: "#D4AF37" }}>Tech</span>
-          </a>
+          </Link>
 
           <p style={text}>
             Ремонт iPhone, Android, ноутбуків, ПК та ігрових консолей у Львові та Нововолинську.
@@ -13,12 +15,13 @@ export default function Footer() {
         </div>
 
         <div style={links}>
-          <a href="/about" style={link}>Про нас</a>
-          <a href="/warranty" style={link}>Гарантія</a>
-          <a href="/works" style={link}>Наші роботи</a>
-          <a href="/price" style={link}>Ціни</a>
-          <a href="/contacts" style={link}>Контакти</a>
-          <a href="/privacy" style={link}>Політика конфіденційності</a>
+          <Link href="/about" style={link}>Про нас</Link>
+          <Link href="/warranty" style={link}>Гарантія</Link>
+          <Link href="/works" style={link}>Наші роботи</Link>
+          <Link href="/price" style={link}>Ціни</Link>
+          <Link href="/shop" style={link}>Магазин MaxNaz</Link>
+          <Link href="/contacts" style={link}>Контакти</Link>
+          <Link href="/privacy" style={link}>Політика конфіденційності</Link>
         </div>
       </div>
 

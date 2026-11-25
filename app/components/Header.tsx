@@ -1,29 +1,48 @@
+import Link from "next/link";
+
 export default function Header() {
   return (
-    <header style={header}>
-      <div style={nav}>
-        <a href="/" style={logo}>
+    <header style={header} className="site-header">
+      <div style={nav} className="site-header-inner">
+        <Link href="/" style={logo} className="site-logo">
           Nazarko<span style={{ color: "#D4AF37" }}>Tech</span>
-        </a>
+        </Link>
 
         <nav style={navButtons} className="desktop-nav">
-          <a href="/price" style={contactBtn}>Ціни</a>
-          <a href="/works" style={contactBtn}>Роботи</a>
-          <a href="/warranty" style={contactBtn}>Гарантія</a>
-          <a href="/about" style={contactBtn}>Про нас</a>
-          <a href="/contacts" style={contactBtn}>Контакти</a>
+          <Link href="/price" style={contactBtn}>Ціни</Link>
+          <Link href="/shop" style={shopBtn}>Магазин</Link>
+          <Link href="/works" style={contactBtn}>Роботи</Link>
+          <Link href="/warranty" style={contactBtn}>Гарантія</Link>
+          <Link href="/about" style={contactBtn}>Про нас</Link>
+          <Link href="/contacts" style={contactBtn}>Контакти</Link>
         </nav>
 
-        <a href="https://t.me/NazarkoMi" style={telegramBtn}>
+        <Link href="/shop" style={shopBtn} className="mobile-shop-link">Магазин</Link>
+
+        <a href="https://t.me/NazarkoMi" style={telegramBtn} className="site-telegram">
           Telegram
         </a>
       </div>
 
       <style>{`
-        @media (max-width: 900px) {
+        .mobile-shop-link { display: none; }
+        @media (max-width: 1020px) {
           .desktop-nav {
             display: none !important;
           }
+          .mobile-shop-link { display: inline-flex; justify-self: center; }
+          .site-header-inner { gap: 14px !important; }
+        }
+        @media (max-width: 480px) {
+          .site-header { padding: 12px 14px !important; }
+          .site-header-inner { gap: 8px !important; }
+          .site-logo { font-size: 19px !important; }
+          .site-telegram { padding: 9px 10px !important; font-size: 12px !important; }
+          .mobile-shop-link { font-size: 12px !important; }
+        }
+        @media (max-width: 340px) {
+          .site-logo { font-size: 17px !important; }
+          .site-header { padding-inline: 10px !important; }
         }
       `}</style>
     </header>
@@ -71,6 +90,12 @@ const contactBtn = {
   textDecoration: "none",
   fontSize: "14px",
   whiteSpace: "nowrap" as const,
+};
+
+const shopBtn = {
+  ...contactBtn,
+  color: "#D4AF37",
+  fontWeight: 700,
 };
 
 const telegramBtn = {
