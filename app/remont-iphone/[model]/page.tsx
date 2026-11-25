@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { iphoneRepairs } from "../../data/iphoneRepairs";
 import Header from "../../components/Header";
 import Link from "next/link";
+import Image from "next/image";
 import BatteryInfo from "../../components/BatteryInfo";
 
 type Props = {
@@ -35,22 +36,30 @@ function formatModel(slug: string) {
     .join(" ");
 }
 
-function getRepairIcon(title: string) {
-  if (title.includes("екрана")) return "📱";
-  if (title.includes("акумулятора")) return "🔋";
-  if (title.includes("роз'єму")) return "⚡";
-  if (title.includes("камери")) return "📷";
-  if (title.includes("чистка")) return "🧼";
-  if (title.includes("Діагностика")) return "🛠️";
-  if (title.includes("скла")) return "✨";
-  if (title.includes("динаміка")) return "🔊";
-  if (title.includes("герметичності")) return "💧";
-  if (title.includes("фронтальної")) return "🤳";
-  if (title.includes("Android")) return "🤖";
-  if (title.includes("Нова оригінальна")) return "🍏";
-  if (title.includes("Вживана")) return "♻️";
-  if (title.includes("Невідома")) return "🔋";
-  return "🔧";
+function getRepairImage(title: string, model: string) {
+  const name = title.toLowerCase();
+  let key = "android";
+
+  if (name.includes("екран")) {
+    key = name.includes("оригінал") && !name.includes("аналог") ? "screen-original" : "screen-oled";
+  } else if (name.includes("батареї") || name.includes("акумулятор")) {
+    key = name.includes("нова оригінальна") ? "battery-new" : name.includes("вживана") ? "battery-used" : "battery-unknown";
+  } else if (name.includes("зарядки")) {
+    const usesLightning = model.startsWith("iphone-x") || /^iphone-1[1-4](?:-|$)/.test(model);
+    key = usesLightning ? "charging-lightning" : "charging-port";
+  } else if (name.includes("камер")) {
+    key = "camera";
+  } else if (name.includes("заднь")) {
+    key = "rear-glass";
+  } else if (name.includes("чистк")) {
+    key = "cleaning";
+  } else if (name.includes("діагностик")) {
+    key = "diagnostics";
+  } else if (name.includes("води")) {
+    key = "water";
+  }
+
+  return `/phone-services/${key}.webp`;
 }
 
 function getRepairInfo(title: string) {
@@ -123,7 +132,16 @@ export default async function ModelPage({ params }: Props) {
       className="repair-card"
       data-info={repairInfo || undefined}
     >
-      <span style={icon}>{getRepairIcon(repair.title)}</span>
+      <div className="repair-visual">
+        <Image
+          src={getRepairImage(repair.title, model)}
+          alt=""
+          width={450}
+          height={300}
+          sizes="(max-width: 768px) 96px, 240px"
+          className="repair-image"
+        />
+      </div>
 
       <h3 style={cardTitle}>{repair.title}</h3>
 
@@ -193,6 +211,25 @@ export default async function ModelPage({ params }: Props) {
     margin-top: auto;
   }
 
+  .repair-visual {
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    border-radius: 13px;
+    overflow: hidden;
+    flex-shrink: 0;
+    background: #1b1b1b;
+  }
+
+  .repair-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .25s ease;
+  }
+
+  .repair-card:hover .repair-image { transform: scale(1.04); }
+
   .repair-card:hover {
     transform: translateY(-6px) scale(1.03);
     border-color: rgba(212,175,55,0.65) !important;
@@ -215,7 +252,7 @@ export default async function ModelPage({ params }: Props) {
     .repair-card {
       width: 100% !important;
       display: grid !important;
-      grid-template-columns: 38px 1fr auto !important;
+      grid-template-columns: 92px minmax(0, 1fr) !important;
       align-items: center !important;
       gap: 14px !important;
       padding: 20px 16px !important;
@@ -234,10 +271,19 @@ export default async function ModelPage({ params }: Props) {
     }
 
     .repair-price-block {
-      text-align: right !important;
-      min-width: 92px !important;
+      grid-column: 2;
+      text-align: left !important;
       margin-top: 0 !important;
     }
+
+    .repair-visual {
+      grid-column: 1;
+      grid-row: 1 / span 2;
+      align-self: center;
+      border-radius: 10px;
+    }
+
+    .repair-card:hover .repair-image { transform: none; }
 
     .repair-card:hover,
     .btn:hover {
@@ -263,7 +309,7 @@ export default async function ModelPage({ params }: Props) {
 
   @media (max-width: 420px) {
     .repair-card {
-      grid-template-columns: 34px 1fr !important;
+      grid-template-columns: 80px minmax(0, 1fr) !important;
     }
 
     .repair-price-block {
@@ -271,6 +317,10 @@ export default async function ModelPage({ params }: Props) {
       text-align: left !important;
       margin-top: 8px;
     }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .repair-image { transition: none !important; transform: none !important; }
   }
 `}</style>
 
@@ -336,13 +386,9 @@ const card = {
   padding: "28px",
 };
 
-const icon = {
-  fontSize: "22px",
-};
-
 const cardTitle = {
   fontSize: "18px",
-  marginBottom: "16px",
+  margin: "16px 0",
   whiteSpace: "pre-line" as const,
   lineHeight: "1.4",
 };
