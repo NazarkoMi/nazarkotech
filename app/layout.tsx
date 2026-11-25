@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     "NazarkoTech — ремонт iPhone, Android, ноутбуків, ПК та консолей у Львові та Нововолинську",
 
   description:
-    "Ремонт iPhone, Android, ноутбуків, ПК, PlayStation та Xbox. Безкоштовна діагностика. Львів та Нововолинськ.",
+    "Ремонт iPhone, Android, ноутбуків, ПК, PlayStation та Xbox. Безкоштовна діагностика смартфонів, ПК та ноутбуків. Львів та Нововолинськ.",
 
   keywords: [
     "NazarkoTech",

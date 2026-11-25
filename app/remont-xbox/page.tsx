@@ -2,17 +2,20 @@ import Header from "../components/Header";
 import Link from "next/link";
 
 const services = [
-  { icon: "🧹", title: "Комплексна чистка Xbox", price: "від 600 грн", time: "1–2 год" },
-  { icon: "🌡️", title: "Заміна термопасти", price: "від 500 грн", time: "1–2 год" },
-  { icon: "💾", title: "Встановлення SSD", price: "від 300 грн", time: "30–60 хв" },
-  { icon: "📺", title: "Ремонт HDMI", price: "від 1200 грн", time: "1–3 год" },
-  { icon: "🎮", title: "Обслуговування геймпадів Xbox", price: "від 400 грн", time: "1–2 год" },
-  { icon: "⚡", title: "Ремонт живлення", price: "від 800 грн", time: "1–3 год" },
-  { icon: "🔧", title: "Профілактика системи охолодження", price: "від 600 грн", time: "1–2 год" },
-  { icon: "🔍", title: "Діагностика", price: "безкоштовно", time: "15–30 хв" },
+  { icon: "🔍", title: "Діагностика Xbox", price: "399 грн", time: "15–30 хв" },
+  { icon: "🧹", title: "Чистка геймпада Xbox", price: "639 грн", time: "1–2 год" },
+  { icon: "🎮", title: "Ремонт кнопки геймпада Xbox", price: "639 грн", time: "Уточнюється" },
+  { icon: "🎮", title: "Ремонт стіка геймпада Xbox", price: "639 грн", time: "Уточнюється" },
+  { icon: "🔧", title: "Ремонт материнської плати", price: "2399 грн", time: "Після діагностики" },
+  { icon: "💿", title: "Заміна дисководу", price: "3999 грн", time: "Уточнюється" },
+  { icon: "💾", title: "Заміна SSD", price: "2399 грн", time: "Уточнюється" },
+  { icon: "📺", title: "Відновлення роботи роз'єму HDMI", price: "1599 грн", time: "1–3 год" },
+  { icon: "⚡", title: "Відновлення роботи роз'ємів", price: "1199 грн", time: "Уточнюється" },
+  { icon: "🌡️", title: "Чистка системи охолодження + заміна термопасти", price: "1700 грн", time: "1–2 год" },
+  { icon: "🧹", title: "Чистка системи охолодження без заміни термопасти", price: "900 грн", time: "1–2 год" },
 ];
 
-export default function PcRepairPage() {
+export default function XboxRepairPage() {
   return (
     <main style={page}>
       <Header />
@@ -87,6 +90,9 @@ export default function PcRepairPage() {
     transition: all 0.25s ease;
   }
 
+  .service-card { display: flex; flex-direction: column; height: 100%; min-height: 180px; }
+  .service-price-block { margin-top: auto; }
+
   .service-card:hover {
     transform: translateY(-6px) scale(1.03);
     border-color: rgba(212,175,55,0.65) !important;
@@ -119,6 +125,7 @@ export default function PcRepairPage() {
       gap: 14px !important;
       padding: 20px 16px !important;
       border-radius: 20px !important;
+      min-height: 112px !important;
     }
 
     .service-card h3 {
@@ -220,6 +227,7 @@ const sectionTitle = {
 const grid = {
   display: "grid",
   gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+  gridAutoRows: "1fr",
   gap: "16px",
 };
 

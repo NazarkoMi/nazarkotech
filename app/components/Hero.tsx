@@ -11,7 +11,7 @@ export default function Hero() {
 
           <p style={subtitle}>
             Якісний ремонт iPhone, Android, ноутбуків, ПК, PlayStation та Xbox.
-            Безкоштовна діагностика, чесні ціни та швидке виконання робіт.
+            Безкоштовна діагностика смартфонів, ПК та ноутбуків, чесні ціни та швидке виконання робіт.
           </p>
 
           <div style={buttonRow}>
