@@ -15,10 +15,10 @@ export default function Home() {
       <Header />
       <Hero />
       <RepairCategories />
+      <ModelsGrid />
       <WhyUs />
       <Reviews />
       <RepairCards />
-      <ModelsGrid />
       <OurWorks />
 
       <section style={ctaWrap}>
