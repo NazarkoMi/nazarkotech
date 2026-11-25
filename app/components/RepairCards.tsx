@@ -44,6 +44,7 @@ const sectionTitle = {
 const repairGrid = {
   display: "grid",
   gridTemplateColumns: "repeat(4, 1fr)",
+  gridAutoRows: "1fr",
   gap: "16px",
 };
 
@@ -52,6 +53,8 @@ const card = {
   border: "1px solid rgba(255,255,255,0.1)",
   borderRadius: "22px",
   padding: "30px",
+  display: "flex",
+  flexDirection: "column" as const,
   boxShadow: "0 20px 60px rgba(0,0,0,0.25)",
 };
 
@@ -63,7 +66,7 @@ const cardTitle = {
 const priceText = {
   color: "#D4AF37",
   fontSize: "17px",
-  margin: 0,
+  margin: "auto 0 0",
 };
 
 const mutedText = {

@@ -182,6 +182,17 @@ export default async function ModelPage({ params }: Props) {
     transition: all 0.25s ease;
   }
 
+  .model-repair-grid .repair-card {
+    display: flex;
+    flex-direction: column;
+    min-height: 180px;
+    height: 100%;
+  }
+
+  .model-repair-grid .repair-price-block {
+    margin-top: auto;
+  }
+
   .repair-card:hover {
     transform: translateY(-6px) scale(1.03);
     border-color: rgba(212,175,55,0.65) !important;
@@ -209,6 +220,7 @@ export default async function ModelPage({ params }: Props) {
       gap: 14px !important;
       padding: 20px 16px !important;
       border-radius: 20px !important;
+      min-height: 104px !important;
     }
 
     .repair-card h3 {
@@ -224,6 +236,7 @@ export default async function ModelPage({ params }: Props) {
     .repair-price-block {
       text-align: right !important;
       min-width: 92px !important;
+      margin-top: 0 !important;
     }
 
     .repair-card:hover,
@@ -312,6 +325,7 @@ const sectionTitle = {
 const grid = {
   display: "grid",
   gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+  gridAutoRows: "1fr",
   gap: "16px",
 };
 
