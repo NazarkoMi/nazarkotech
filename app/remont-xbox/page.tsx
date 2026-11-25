@@ -1,18 +1,19 @@
 import Header from "../components/Header";
 import Link from "next/link";
+import Image from "next/image";
 
 const services = [
-  { icon: "🔍", title: "Діагностика Xbox", price: "399 грн", time: "15–30 хв" },
-  { icon: "🧹", title: "Чистка геймпада Xbox", price: "639 грн", time: "1–2 год" },
-  { icon: "🎮", title: "Ремонт кнопки геймпада Xbox", price: "639 грн", time: "Уточнюється" },
-  { icon: "🎮", title: "Ремонт стіка геймпада Xbox", price: "639 грн", time: "Уточнюється" },
-  { icon: "🔧", title: "Ремонт материнської плати", price: "2399 грн", time: "Після діагностики" },
-  { icon: "💿", title: "Заміна дисководу", price: "3999 грн", time: "Уточнюється" },
-  { icon: "💾", title: "Заміна SSD", price: "2399 грн", time: "Уточнюється" },
-  { icon: "📺", title: "Відновлення роботи роз'єму HDMI", price: "1599 грн", time: "1–3 год" },
-  { icon: "⚡", title: "Відновлення роботи роз'ємів", price: "1199 грн", time: "Уточнюється" },
-  { icon: "🌡️", title: "Чистка системи охолодження + заміна термопасти", price: "1700 грн", time: "1–2 год" },
-  { icon: "🧹", title: "Чистка системи охолодження без заміни термопасти", price: "900 грн", time: "1–2 год" },
+  { image: "/console-services/diagnostics.webp", title: "Діагностика Xbox", price: "399 грн", time: "15–30 хв" },
+  { image: "/console-services/controller-cleaning.webp", title: "Чистка геймпада Xbox", price: "639 грн", time: "1–2 год" },
+  { image: "/console-services/controller-button.webp", title: "Ремонт кнопки геймпада Xbox", price: "639 грн", time: "Уточнюється" },
+  { image: "/console-services/controller-stick.webp", title: "Ремонт стіка геймпада Xbox", price: "639 грн", time: "Уточнюється" },
+  { image: "/console-services/motherboard.webp", title: "Ремонт материнської плати", price: "2399 грн", time: "Після діагностики" },
+  { image: "/console-services/disc-drive.webp", title: "Заміна дисководу", price: "3999 грн", time: "Уточнюється" },
+  { image: "/console-services/ssd.webp", title: "Заміна SSD", price: "2399 грн", time: "Уточнюється" },
+  { image: "/console-services/hdmi.webp", title: "Відновлення роботи роз'єму HDMI", price: "1599 грн", time: "1–3 год" },
+  { image: "/console-services/ports.webp", title: "Відновлення роботи роз'ємів", price: "1199 грн", time: "Уточнюється" },
+  { image: "/console-services/thermal-paste.webp", title: "Чистка системи охолодження + заміна термопасти", price: "1700 грн", time: "1–2 год" },
+  { image: "/console-services/cooling-cleaning.webp", title: "Чистка системи охолодження без заміни термопасти", price: "900 грн", time: "1–2 год" },
 ];
 
 export default function XboxRepairPage() {
@@ -39,7 +40,16 @@ export default function XboxRepairPage() {
         <div style={grid} className="service-grid">
           {services.map((service) => (
             <div key={service.title} style={card} className="service-card">
-              <span style={icon}>{service.icon}</span>
+              <div className="service-visual">
+                <Image
+                  src={service.image}
+                  alt=""
+                  width={420}
+                  height={280}
+                  sizes="(max-width: 768px) 96px, 240px"
+                  className="service-image"
+                />
+              </div>
               <h3 style={cardTitle}>{service.title}</h3>
 
               <div className="service-price-block">
@@ -92,6 +102,9 @@ export default function XboxRepairPage() {
 
   .service-card { display: flex; flex-direction: column; height: 100%; min-height: 180px; }
   .service-price-block { margin-top: auto; }
+  .service-visual { width: 100%; aspect-ratio: 3 / 2; flex-shrink: 0; border-radius: 13px; overflow: hidden; background: #1b1b1b; }
+  .service-image { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .25s ease; }
+  .service-card:hover .service-image { transform: scale(1.04); }
 
   .service-card:hover {
     transform: translateY(-6px) scale(1.03);
@@ -120,7 +133,7 @@ export default function XboxRepairPage() {
     .service-card {
       width: 100% !important;
       display: grid !important;
-      grid-template-columns: 34px 1fr !important;
+      grid-template-columns: 92px minmax(0, 1fr) !important;
       align-items: center !important;
       gap: 14px !important;
       padding: 20px 16px !important;
@@ -143,6 +156,15 @@ export default function XboxRepairPage() {
       text-align: left !important;
       margin-top: 8px;
     }
+
+    .service-visual {
+      grid-column: 1;
+      grid-row: 1 / span 2;
+      align-self: center;
+      border-radius: 10px;
+    }
+
+    .service-card:hover .service-image { transform: none; }
 
     .service-card:hover,
     .btn:hover {
@@ -236,10 +258,6 @@ const card = {
   border: "1px solid rgba(255,255,255,0.1)",
   borderRadius: "22px",
   padding: "28px",
-};
-
-const icon = {
-  fontSize: "24px",
 };
 
 const cardTitle = {
