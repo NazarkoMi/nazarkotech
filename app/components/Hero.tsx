@@ -33,7 +33,7 @@ export default function Hero() {
           <div style={glow} />
 
           <img
-            src="/hero-devices.png"
+            src="/hero-devices-v2.webp"
             alt="Ремонт смартфонів, ноутбуків, ПК та консолей"
             style={heroImage}
           />
