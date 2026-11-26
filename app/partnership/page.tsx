@@ -7,7 +7,7 @@ const promoCode = "DAE26C";
 
 export const metadata: Metadata = {
   title: `Промокод LinkCom ${promoCode} і бонус 500 грн у Львові | NazarkoTech`,
-  description: `Підключаєш інтернет LinkCom у Львові? Перевір промокод ${promoCode} у менеджера. За умовами реферальної програми новий абонент отримує 500 грн на баланс після підключення за реферальним посиланням.`,
+  description: `Промокод LinkCom ${promoCode} для заявки на підключення інтернету у Львові. Бонус 500 грн на баланс за умовами реферальної програми.`,
   alternates: { canonical: "/partnership" },
 };
 
@@ -23,7 +23,7 @@ export default function PartnershipPage() {
           <p>За реферальною програмою LinkCom новий абонент отримує 500 грн на баланс після підключення за персональним реферальним посиланням.</p>
           <CopyPromo code={promoCode} />
           <h3>Як оформити підключення з бонусом</h3>
-          <p className="promo-caption">Перед поданням заявки повідом менеджеру LinkCom код {promoCode} й уточни, за яким реферальним посиланням оформити підключення, щоб отримати бонус.</p>
+          <p className="promo-caption">Вкажи промокод {promoCode} у заявці на сайті LinkCom або повідом його менеджеру під час оформлення заявки.</p>
           <a className="partner-apply" href="https://linkcom.lviv.ua/domashniy-internet/">
             Залишити заявку на сайті LinkCom
           </a>
