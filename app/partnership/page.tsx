@@ -29,6 +29,19 @@ export default function PartnershipPage() {
           </a>
           <p className="partner-terms"><a href="https://linkcom.lviv.ua/promotions/referalna-prohrama/">Офіційні умови реферальної програми LinkCom</a></p>
         </section>
+        <section className="partnership-questions" aria-labelledby="linkcom-questions">
+          <h2 id="linkcom-questions">Запитання про промокод LinkCom</h2>
+          <dl>
+            <dt>Який промокод LinkCom для підключення у Львові?</dt>
+            <dd>Реферальний промокод — <strong>{promoCode}</strong>.</dd>
+
+            <dt>Куди вказати промокод?</dt>
+            <dd>Додай код до заявки на сайті LinkCom або повідом його менеджеру під час оформлення підключення.</dd>
+
+            <dt>Коли нарахують 500 грн?</dt>
+            <dd>Бонус нараховують після підключення нового абонента за персональним реферальним посиланням згідно з умовами LinkCom.</dd>
+          </dl>
+        </section>
       </div>
       <Footer />
       <style>{`
@@ -52,6 +65,10 @@ export default function PartnershipPage() {
         .partner-apply { display: inline-block; margin-top: 20px; padding: 12px 16px; border: 1px solid rgba(212,175,55,.5); border-radius: 12px; color: #e8c75e; font-weight: 700; text-decoration: none; }
         .partner-apply:hover { background: rgba(212,175,55,.1); }
         .partner-apply:focus-visible { outline: 2px solid #e8c75e; outline-offset: 4px; }
+        .partnership-questions { max-width: 760px; margin-top: 38px; }
+        .partnership-questions h2 { font-size: clamp(23px, 4vw, 30px); font-weight: 700; margin-bottom: 16px; }
+        .partnership-questions dt { padding-top: 16px; border-top: 1px solid rgba(255,255,255,.12); font-weight: 700; }
+        .partnership-questions dd { margin: 6px 0 16px; color: #bcbcbc; line-height: 1.6; }
       `}</style>
     </main>
   );

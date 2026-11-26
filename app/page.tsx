@@ -1,4 +1,5 @@
 import Header from "./components/Header";
+import Link from "next/link";
 import Hero from "./components/Hero";
 import RepairCards from "./components/RepairCards";
 import ModelsGrid from "./components/ModelsGrid";
@@ -14,6 +15,10 @@ export default function Home() {
     <main style={page}>
       <Header />
       <Hero />
+      <aside className="linkcom-banner" aria-label="Партнерська пропозиція LinkCom">
+        <span>Підключаєш домашній інтернет у Львові?</span>
+        <Link href="/partnership">Промокод LinkCom у Львові <span aria-hidden="true">→</span></Link>
+      </aside>
       <RepairCategories />
       <ModelsGrid />
       <WhyUs />
@@ -48,6 +53,36 @@ export default function Home() {
       <Footer />
 
       <style>{`
+        .linkcom-banner {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          justify-content: space-between;
+          gap: 8px 18px;
+          max-width: 1132px;
+          margin: 0 auto;
+          padding: 14px 18px;
+          border: 1px solid rgba(212, 175, 55, .25);
+          border-radius: 14px;
+          background: rgba(212, 175, 55, .07);
+        }
+
+        .linkcom-banner a {
+          color: #e8c75e;
+          font-weight: 700;
+          text-decoration: underline;
+          text-underline-offset: 4px;
+        }
+
+        .linkcom-banner a:focus-visible {
+          outline: 2px solid #e8c75e;
+          outline-offset: 4px;
+        }
+
+        @media (max-width: 1180px) {
+          .linkcom-banner { margin-inline: 24px; }
+        }
+
         * {
           box-sizing: border-box;
         }
