@@ -6,8 +6,8 @@ import CopyPromo from "./CopyPromo";
 const promoCode = "DAE26C";
 
 export const metadata: Metadata = {
-  title: "Партнерство з LinkCom — промокод | NazarkoTech",
-  description: `Реферальний промокод LinkCom ${promoCode}. 500 грн на баланс за підключення нового абонента у Львові згідно з умовами акції.`,
+  title: `Промокод LinkCom ${promoCode} і бонус 500 грн у Львові | NazarkoTech`,
+  description: `Підключаєш інтернет LinkCom у Львові? Перевір промокод ${promoCode} у менеджера. За умовами реферальної програми новий абонент отримує 500 грн на баланс після підключення за реферальним посиланням.`,
   alternates: { canonical: "/partnership" },
 };
 
@@ -16,16 +16,18 @@ export default function PartnershipPage() {
     <main className="partnership-page">
       <Header />
       <div className="partnership-content">
-        <h1>Партнерство</h1>
+        <h1>Промокод LinkCom у Львові</h1>
         <section className="partnership-offer" aria-labelledby="linkcom-offer">
           <p className="partner-name">LinkCom · Інтернет-провайдер у Львові</p>
           <h2 id="linkcom-offer">500 грн на баланс</h2>
-          <p>Бонус за підключення нового абонента за реферальним промокодом відповідно до умов акції.</p>
+          <p>За реферальною програмою LinkCom новий абонент отримує 500 грн на баланс після підключення за персональним реферальним посиланням.</p>
           <CopyPromo code={promoCode} />
-          <p className="promo-caption">Залиши заявку та повідом промокод менеджеру під час оформлення підключення.</p>
+          <h3>Як оформити підключення з бонусом</h3>
+          <p className="promo-caption">Перед поданням заявки повідом менеджеру LinkCom код {promoCode} й уточни, за яким реферальним посиланням оформити підключення, щоб отримати бонус.</p>
           <a className="partner-apply" href="https://linkcom.lviv.ua/domashniy-internet/">
             Залишити заявку на сайті LinkCom
           </a>
+          <p className="partner-terms"><a href="https://linkcom.lviv.ua/promotions/referalna-prohrama/">Офіційні умови реферальної програми LinkCom</a></p>
         </section>
       </div>
       <Footer />
@@ -44,6 +46,9 @@ export default function PartnershipPage() {
         .promo-code-row button:focus-visible { outline: 2px solid #e8c75e; outline-offset: 4px; }
         .promo-status { min-height: 1.5em; display: block; margin-top: 6px; color: #e8c75e; font-size: 14px; }
         .partnership-offer .promo-caption { font-size: 14px; }
+        .partnership-offer h3 { font-size: 18px; font-weight: 700; margin: 12px 0 8px; }
+        .partnership-offer .partner-terms { font-size: 14px; margin-top: 16px; }
+        .partner-terms a { color: #e8c75e; text-decoration: underline; text-underline-offset: 3px; }
         .partner-apply { display: inline-block; margin-top: 20px; padding: 12px 16px; border: 1px solid rgba(212,175,55,.5); border-radius: 12px; color: #e8c75e; font-weight: 700; text-decoration: none; }
         .partner-apply:hover { background: rgba(212,175,55,.1); }
         .partner-apply:focus-visible { outline: 2px solid #e8c75e; outline-offset: 4px; }
