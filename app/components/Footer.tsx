@@ -20,6 +20,7 @@ export default function Footer() {
           <Link href="/works" style={link}>Наші роботи</Link>
           <Link href="/price" style={link}>Ціни</Link>
           <Link href="/shop" style={link}>Магазин MaxNaz</Link>
+          <Link href="/partnership" style={link}>Партнерство</Link>
           <Link href="/contacts" style={link}>Контакти</Link>
           <Link href="/privacy" style={link}>Політика конфіденційності</Link>
         </div>

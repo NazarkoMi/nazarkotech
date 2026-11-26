@@ -11,13 +11,17 @@ export default function Header() {
         <nav style={navButtons} className="desktop-nav">
           <Link href="/price" style={contactBtn}>Ціни</Link>
           <Link href="/shop" style={shopBtn}>Магазин</Link>
+          <Link href="/partnership" style={contactBtn}>Партнерство</Link>
           <Link href="/works" style={contactBtn}>Роботи</Link>
           <Link href="/warranty" style={contactBtn}>Гарантія</Link>
           <Link href="/about" style={contactBtn}>Про нас</Link>
           <Link href="/contacts" style={contactBtn}>Контакти</Link>
         </nav>
 
-        <Link href="/shop" style={shopBtn} className="mobile-shop-link">Магазин</Link>
+        <nav className="mobile-store-nav" aria-label="Магазин і партнерство">
+          <Link href="/shop" style={shopBtn}>Магазин</Link>
+          <Link href="/partnership" style={contactBtn}>Партнерство</Link>
+        </nav>
 
         <a href="https://t.me/NazarkoMi" style={telegramBtn} className="site-telegram">
           Telegram
@@ -25,20 +29,20 @@ export default function Header() {
       </div>
 
       <style>{`
-        .mobile-shop-link { display: none; }
+        .mobile-store-nav { display: none; }
         @media (max-width: 1020px) {
           .desktop-nav {
             display: none !important;
           }
-          .mobile-shop-link { display: inline-flex; justify-self: center; }
-          .site-header-inner { gap: 14px !important; }
+          .mobile-store-nav { display: flex; gap: 20px; grid-column: 1 / -1; grid-row: 2; }
+          .site-header-inner { grid-template-columns: 1fr auto !important; gap: 10px 14px !important; }
+          .site-telegram { grid-column: 2; grid-row: 1; }
         }
         @media (max-width: 480px) {
           .site-header { padding: 12px 14px !important; }
           .site-header-inner { gap: 8px !important; }
           .site-logo { font-size: 19px !important; }
           .site-telegram { padding: 9px 10px !important; font-size: 12px !important; }
-          .mobile-shop-link { font-size: 12px !important; }
         }
         @media (max-width: 340px) {
           .site-logo { font-size: 17px !important; }
