@@ -13,8 +13,7 @@ type Props = {
 };
 
 function getModelData(model: string) {
-  if (!Object.prototype.hasOwnProperty.call(iphoneRepairs, model)) notFound();
-  return iphoneRepairs[model];
+  return Object.prototype.hasOwnProperty.call(iphoneRepairs, model) ? iphoneRepairs[model] : undefined;
 }
 
 function getRepairImage(title: string, model: string) {
@@ -62,7 +61,11 @@ function getRepairInfo(title: string) {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { model } = await params;
-  const { name: modelName } = getModelData(model);
+  const modelData = getModelData(model);
+  if (!modelData) {
+    return { title: "Модель не знайдено | NazarkoTech", robots: { index: false } };
+  }
+  const { name: modelName } = modelData;
 
   return {
     title: `Ремонт ${modelName} у Львові | NazarkoTech`,
@@ -72,7 +75,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ModelPage({ params }: Props) {
   const { model } = await params;
-  const { name: modelName, repairs: repairsList } = getModelData(model);
+  const modelData = getModelData(model);
+  if (!modelData) notFound();
+  const { name: modelName, repairs: repairsList } = modelData;
 
   return (
     <main style={page}>
