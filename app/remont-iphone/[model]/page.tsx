@@ -12,6 +12,12 @@ type Props = {
   }>;
 };
 
+export const dynamicParams = false;
+
+export function generateStaticParams() {
+  return Object.keys(iphoneRepairs).map((model) => ({ model }));
+}
+
 function getModelData(model: string) {
   return Object.prototype.hasOwnProperty.call(iphoneRepairs, model) ? iphoneRepairs[model] : undefined;
 }

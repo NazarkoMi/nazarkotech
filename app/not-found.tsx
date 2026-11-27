@@ -1,12 +1,12 @@
 import Link from "next/link";
-import Header from "../../components/Header";
+import Header from "./components/Header";
 
-export default function ModelNotFound() {
+export default function NotFound() {
   return (
     <main className="min-h-screen bg-[#050505] text-white">
       <Header />
       <section className="mx-auto max-w-5xl px-6 py-16">
-        <h1 className="text-4xl font-bold">Модель не знайдено</h1>
+        <h1 className="text-4xl font-bold">Сторінку не знайдено</h1>
         <p className="mt-4 text-[#bcbcbc]">Обери пристрій у каталозі, щоб переглянути ціни на ремонт.</p>
         <Link
           href="/#iphone-models"
