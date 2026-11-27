@@ -90,7 +90,7 @@ export default function Home() {
 
         #repair-catalog { scroll-margin-top: 105px; }
         #repair-catalog .category-card { box-shadow: none !important; }
-        #repair-catalog .category-visual { background: #191918; }
+        #repair-catalog .category-visual { background: #1d1d1d; }
         #repair-catalog .phone-model-visual { background: radial-gradient(ellipse at center, #262520, transparent 72%); }
 
         .linkcom-banner {
