@@ -1,5 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
+import { useState } from "react";
 
 const models = [
   { name: "🤖 Android", slug: "android" },
@@ -45,6 +48,14 @@ const models = [
 ];
 
 export default function ModelsGrid() {
+  const [query, setQuery] = useState("");
+  const terms = query.toLowerCase().replace(/айфон/g, "iphone").replace(/([a-z])(\d)/g, "$1 $2")
+    .split(/[\s-]+/).filter(Boolean);
+  const visibleModels = models.filter(({ slug }) => {
+    const parts = slug.split("-");
+    return terms.every((term) => parts.some((part) => part.startsWith(term)));
+  });
+
   return (
     <section id="iphone-models" style={section}>
       <h2 style={sectionTitle}>Обери свою модель</h2>
@@ -53,8 +64,28 @@ export default function ModelsGrid() {
         Оберіть модель пристрою, щоб переглянути актуальні ціни на ремонт та доступні послуги.
       </p>
 
-      <div style={modelGrid}>
-        {models.map((model) => (
+      <div className="model-search">
+        <label htmlFor="model-search-input">Пошук моделі</label>
+        <div className="model-search-controls">
+          <input
+            id="model-search-input"
+            type="search"
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+            placeholder="Наприклад, 13 Pro або XR"
+            aria-controls="phone-model-results"
+          />
+          {query && <button type="button" onClick={() => setQuery("")}>Очистити</button>}
+        </div>
+        <p role="status" aria-atomic="true">
+          {terms.length > 0 && (visibleModels.length
+            ? `Знайдено моделей: ${visibleModels.length}`
+            : "Модель не знайдено. Спробуй коротшу назву, наприклад 13 або XR.")}
+        </p>
+      </div>
+
+      <div id="phone-model-results" style={modelGrid}>
+        {visibleModels.map((model) => (
           <Link
             key={model.slug}
             href={`/remont-iphone/${model.slug}`}
@@ -77,6 +108,13 @@ export default function ModelsGrid() {
         ))}
       </div>
       <style>{`
+        .model-search { max-width: 560px; margin-bottom: 20px; }
+        .model-search label { display: block; margin-bottom: 8px; font-weight: 700; }
+        .model-search-controls { display: flex; flex-wrap: wrap; gap: 8px; }
+        .model-search-controls input { flex: 1; min-width: min(100%, 180px); padding: 11px 14px; border: 1px solid rgba(212,175,55,.35); border-radius: 12px; background: #181818; color: #f5f5f5; font-size: 16px; }
+        .model-search-controls button { color: #e5c65c; padding: 8px 12px; border-radius: 10px; cursor: pointer; }
+        .model-search-controls :focus-visible { outline: 2px solid #e5c65c; outline-offset: 2px; }
+        .model-search p:not(:empty) { color: #bcbcbc; margin-top: 10px; }
         .phone-model-card { min-width: 0; text-align: center; overflow: hidden; display: flex !important; flex-direction: column; align-items: stretch; height: 100%; }
         .phone-model-card:hover, .phone-model-card:focus-visible {
           transform: translateY(-4px); border-color: #d4af37 !important;
@@ -123,7 +161,7 @@ const sectionDesc = {
 
 const modelGrid = {
   display: "grid",
-  gridTemplateColumns: "repeat(auto-fit, minmax(min(136px, 100%), 1fr))",
+  gridTemplateColumns: "repeat(auto-fill, minmax(min(136px, 100%), 1fr))",
   gridAutoRows: "1fr",
   gap: "12px",
 };

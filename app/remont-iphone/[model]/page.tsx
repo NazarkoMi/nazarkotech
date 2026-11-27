@@ -3,6 +3,7 @@ import { iphoneRepairs } from "../../data/iphoneRepairs";
 import Header from "../../components/Header";
 import Link from "next/link";
 import Image from "next/image";
+import { notFound } from "next/navigation";
 import BatteryInfo from "../../components/BatteryInfo";
 
 type Props = {
@@ -11,29 +12,9 @@ type Props = {
   }>;
 };
 
-const repairs = [
-  { title: "Заміна екрана Оригаінал/Високоякісний аналог", price: "від 1550 грн", time: "2–4 год" },
-  { title: "Заміна акумулятора", price: "від 1190 грн", time: "1–2 год" },
-  { title: "Заміна роз'єму зарядки", price: "від 1490 грн", time: "2–3 год" },
-  { title: "Заміна камери", price: "від 1790 грн", time: "2–4 год" },
-  { title: "Переклейка заднього скла", price: "від 1790 грн", time: "3–5 год" },
-  { title: "Комплексна чистка", price: "від 790 грн", time: "1–2 год" },
-  { title: "Діагностика", price: "безкоштовно", time: "15–30 хв" },
-];
-
-function formatModel(slug: string) {
-  return slug
-    .split("-")
-    .map((word) => {
-      if (word === "iphone") return "iPhone";
-      if (word === "pro") return "Pro";
-      if (word === "max") return "Max";
-      if (word === "mini") return "mini";
-      if (word === "plus") return "Plus";
-      if (word === "air") return "Air";
-      return word.toUpperCase();
-    })
-    .join(" ");
+function getModelData(model: string) {
+  if (!Object.prototype.hasOwnProperty.call(iphoneRepairs, model)) notFound();
+  return iphoneRepairs[model];
 }
 
 function getRepairImage(title: string, model: string) {
@@ -80,9 +61,8 @@ function getRepairInfo(title: string) {
 
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const resolvedParams = await params;
-  const modelData = iphoneRepairs[resolvedParams.model];
-  const modelName = modelData?.name || formatModel(resolvedParams.model);
+  const { model } = await params;
+  const { name: modelName } = getModelData(model);
 
   return {
     title: `Ремонт ${modelName} у Львові | NazarkoTech`,
@@ -92,9 +72,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ModelPage({ params }: Props) {
   const { model } = await params;
-  const modelData = iphoneRepairs[model];
-  const modelName = modelData?.name || formatModel(model);
-  const repairsList = modelData?.repairs || repairs;
+  const { name: modelName, repairs: repairsList } = getModelData(model);
 
   return (
     <main style={page}>
