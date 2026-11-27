@@ -6,8 +6,8 @@ import CopyPromo from "./CopyPromo";
 const promoCode = "DAE26C";
 
 export const metadata: Metadata = {
-  title: `Промокод LinkCom ${promoCode} і бонус 500 грн у Львові | NazarkoTech`,
-  description: `Промокод LinkCom ${promoCode} для заявки на підключення інтернету у Львові. Бонус 500 грн на баланс за умовами реферальної програми.`,
+  title: `Промокод LinkCom ${promoCode} для дому й бізнесу у Львові | NazarkoTech`,
+  description: `Промокод LinkCom ${promoCode} діє для нових домашніх і бізнес-підключень у Львові. Вкажи код в онлайн-заявці або повідом менеджеру LinkCom.`,
   alternates: { canonical: "/partnership" },
 };
 
@@ -16,7 +16,7 @@ export default function PartnershipPage() {
     <main className="partnership-page">
       <Header />
       <div className="partnership-content">
-        <h1>Промокод LinkCom у Львові</h1>
+        <h1>Промокод LinkCom для дому й бізнесу у Львові</h1>
         <section className="partnership-offer" aria-labelledby="linkcom-offer">
           <p className="partner-name">LinkCom · Інтернет-провайдер у Львові</p>
           <h2 id="linkcom-offer">500 грн на баланс</h2>
@@ -25,9 +25,18 @@ export default function PartnershipPage() {
           <h3>Як оформити підключення з бонусом</h3>
           <p className="promo-caption">Вкажи промокод {promoCode} у заявці на сайті LinkCom або повідом його менеджеру під час оформлення заявки.</p>
           <a className="partner-apply" href="https://linkcom.lviv.ua/domashniy-internet/">
-            Залишити заявку на сайті LinkCom
+            Підключити домашній інтернет
           </a>
           <p className="partner-terms"><a href="https://linkcom.lviv.ua/promotions/referalna-prohrama/">Офіційні умови реферальної програми LinkCom</a></p>
+        </section>
+        <section className="partnership-offer partnership-business" aria-labelledby="linkcom-business">
+          <h2 id="linkcom-business">Промокод LinkCom для бізнесу</h2>
+          <p>Партнерський промокод <strong>{promoCode}</strong> діє також для нових бізнес-підключень LinkCom у Львові, зокрема для офісів і магазинів.</p>
+          <h3>Як подати заявку для бізнесу</h3>
+          <p>Вкажи код у заявці на сайті LinkCom або повідом його менеджеру під час оформлення. Умови нарахування бонусу для твого бізнес-тарифу уточни в менеджера.</p>
+          <a className="partner-apply" href="https://linkcom.lviv.ua/dlia-biznesu/">
+            Підключити інтернет для бізнесу
+          </a>
         </section>
         <section className="partnership-questions" aria-labelledby="linkcom-questions">
           <h2 id="linkcom-questions">Запитання про промокод LinkCom</h2>
@@ -50,6 +59,9 @@ export default function PartnershipPage() {
         .partnership-content h1 { font-size: clamp(38px, 7vw, 62px); line-height: 1.1; font-weight: 700; margin: 0 0 26px; }
         .partnership-offer { max-width: 760px; padding: clamp(22px, 5vw, 48px); border: 1px solid rgba(212,175,55,.28); border-radius: 26px; background: rgba(255,255,255,.04); }
         .partnership-offer h2 { margin: 12px 0; color: #e8c75e; font-size: clamp(32px, 6vw, 52px); font-weight: 700; line-height: 1.12; }
+        .partnership-business { margin-top: 24px; }
+        .partnership-business h2 { margin-top: 0; font-size: clamp(25px, 4vw, 34px); }
+        .partnership-business strong { color: #e8c75e; }
         .partnership-offer p { margin: 0; color: #bcbcbc; line-height: 1.6; }
         .partnership-offer .partner-name { font-weight: 600; color: #e5e5e5; }
         .promo-copy { margin-top: 26px; }
