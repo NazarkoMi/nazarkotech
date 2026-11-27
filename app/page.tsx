@@ -15,12 +15,10 @@ export default function Home() {
     <main style={page}>
       <Header />
       <Hero />
-      <aside className="linkcom-banner" aria-label="Партнерська пропозиція LinkCom">
-        <span>Підключаєш домашній інтернет у Львові?</span>
-        <Link href="/partnership">Промокод LinkCom у Львові <span aria-hidden="true">→</span></Link>
-      </aside>
-      <RepairCategories />
-      <ModelsGrid />
+      <div id="repair-catalog">
+        <RepairCategories />
+        <ModelsGrid />
+      </div>
       <WhyUs />
       <Reviews />
       <RepairCards />
@@ -50,21 +48,56 @@ export default function Home() {
 
       <FAQ />
 
+      <aside className="linkcom-banner" aria-label="Партнерська пропозиція LinkCom">
+        <Link href="/partnership">Промокод LinkCom у Львові <span aria-hidden="true">→</span></Link>
+      </aside>
+
       <Footer />
 
       <style>{`
-        .linkcom-banner {
-          display: flex;
-          flex-wrap: wrap;
+        .home-hero {
+          display: grid;
+          grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
           align-items: center;
-          justify-content: space-between;
-          gap: 8px 18px;
-          max-width: 1132px;
+          gap: 20px;
+          max-width: 1180px;
+          min-height: 475px;
+          margin-inline: auto;
+          padding: clamp(38px, 6vw, 76px) 24px;
+        }
+
+        .home-hero-location { color: #dfc37d; font-size: 14px; margin: 0 0 18px; }
+        .home-hero h1 {
+          max-width: 9ch;
+          margin: 0;
+          color: #f7f5ee;
+          font-size: clamp(45px, 6.5vw, 88px);
+          font-weight: 600;
+          line-height: .99;
+          letter-spacing: -.055em;
+          text-wrap: balance;
+        }
+        .home-hero-description { margin: 22px 0 0; color: #bcbab4; font-size: clamp(16px, 2vw, 19px); line-height: 1.6; }
+        .home-hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 18px; margin-top: 26px; }
+        .home-hero-actions a { display: inline-flex; align-items: center; gap: 12px; min-height: 46px; font-weight: 600; text-decoration: none; }
+        .home-hero-actions a:focus-visible { outline: 2px solid #ebd39a; outline-offset: 4px; }
+        .home-hero-primary { background: #e3c37c; color: #18140d; padding: 10px 16px; border-radius: 10px; }
+        .home-hero-primary:hover { background: #f0d599; }
+        .home-hero-phone { color: #f7f5ee; padding-inline: 4px; }
+        .home-hero-phone:hover { text-decoration: underline; text-underline-offset: 5px; }
+        .home-hero-visual { background: radial-gradient(ellipse at center, #28251d 0%, #141413 60%, #101010 100%); border: 1px solid #2b2a27; border-radius: 24px; }
+        .home-hero-visual img { display: block; width: 100%; height: auto; }
+
+        #repair-catalog { scroll-margin-top: 105px; }
+        #repair-catalog .category-card { box-shadow: none !important; }
+        #repair-catalog .category-visual { background: #191918; }
+        #repair-catalog .phone-model-visual { background: radial-gradient(ellipse at center, #262520, transparent 72%); }
+
+        .linkcom-banner {
+          max-width: 1180px;
           margin: 0 auto;
-          padding: 14px 18px;
-          border: 1px solid rgba(212, 175, 55, .25);
-          border-radius: 14px;
-          background: rgba(212, 175, 55, .07);
+          padding: 0 24px 24px;
+          font-size: 14px;
         }
 
         .linkcom-banner a {
@@ -77,10 +110,6 @@ export default function Home() {
         .linkcom-banner a:focus-visible {
           outline: 2px solid #e8c75e;
           outline-offset: 4px;
-        }
-
-        @media (max-width: 1180px) {
-          .linkcom-banner { margin-inline: 24px; }
         }
 
         * {
@@ -107,7 +136,7 @@ export default function Home() {
         .review-card,
         .work-card,
         .btn {
-          transition: all 0.25s ease;
+          transition: border-color .2s ease, background-color .2s ease;
         }
 
         .repair-card:hover,
@@ -116,35 +145,19 @@ export default function Home() {
         .why-card:hover,
         .review-card:hover,
         .work-card:hover {
-          transform: translateY(-6px) scale(1.03);
-          border-color: rgba(212, 175, 55, 0.65) !important;
-          box-shadow:
-            0 20px 70px rgba(212, 175, 55, 0.16),
-            0 0 40px rgba(212, 175, 55, 0.08);
-          background: rgba(255,255,255,0.06);
+          border-color: rgba(227, 195, 124, .42) !important;
         }
 
         .btn:hover {
-          transform: translateY(-3px);
-          box-shadow: 0 14px 40px rgba(212, 175, 55, 0.22);
+          border-color: rgba(227, 195, 124, .55) !important;
         }
 
-        @media (max-width: 768px) {
-          .repair-card:hover,
-          .model-card:hover,
-          .category-card:hover,
-          .why-card:hover,
-          .review-card:hover,
-          .work-card:hover,
-          .btn:hover {
-            transform: none;
-          }
-
-          h1 {
-            font-size: 42px !important;
-            line-height: 1.1 !important;
-          }
-
+        @media (max-width: 760px) {
+          .home-hero { grid-template-columns: 1fr; gap: 24px; min-height: 0; padding-block: 34px 12px; }
+          .home-hero h1 { max-width: none; }
+          .home-hero-description { margin-top: 14px; }
+          .home-hero-actions { margin-top: 18px; }
+          .home-hero-visual { max-width: 520px; border-radius: 18px; }
           .repair-grid {
             grid-template-columns: 1fr 1fr !important;
           }
@@ -156,8 +169,7 @@ export default function Home() {
 
 const page = {
   minHeight: "100vh",
-  background:
-    "radial-gradient(circle at 70% 15%, rgba(212,175,55,0.16), transparent 28%), #050505",
+  background: "#0d0d0d",
   color: "white",
   fontFamily: "Arial, sans-serif",
 };
